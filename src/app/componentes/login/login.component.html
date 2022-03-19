@@ -1,0 +1,47 @@
+<app-banner-superior></app-banner-superior>
+<div class="container-fluid imagen-fondo">
+  <div class="row vh-100 justify-content-center">
+
+
+
+  <form class="m-5 col-md-4 col-sm-10" [formGroup]="form" (ngSubmit)="onLogin($event)">
+    <h2 class="text-center text-white">INICIAR SESION</h2>
+    <div class="mb-3 mt-3">
+      <label for="exampleInputnombreUsuario1" class="form-label">Nombre de usuario</label>
+      <input type="text" formControlName="nombreUsuario"
+        [ngClass]="{'is-invalid': nombreUsuario?.errors && nombreUsuario?.touched, 'is-valid': !nombreUsuario?.errors && nombreUsuario?.touched}"
+        class="form-control" id="exampleInputnombreUsuario1" aria-describedby="nombreUsuarioHelp">
+
+      <div *ngIf="nombreUsuario?.errors && nombreUsuario?.touched">
+        <p *ngIf="nombreUsuario?.hasError('required')" class="text-danger">
+          El nombreUsuario es requerido.
+        </p>
+        <p *ngIf="nombreUsuario?.hasError('nombreUsuario')" class="text-danger">
+          El formato del nombreUsuario debe ser válido.
+        </p>
+      </div>
+
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+        <input type="password" formControlName="password"
+        [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
+        class="form-control" id="exampleInputPassword1">
+
+        <div *ngIf="Password?.errors && Password?.touched">
+          <p *ngIf="Password?.hasError('required')" class="text-danger">
+            La contraseña es requerida.
+          </p>
+          <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+            La contraseña debe ser de 8 o más caracteres.
+          </p>
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-skyblue btn-sm w-100 fw-bold text-light border border-light">INICIAR SESION</button>
+    </form>
+    <h1 class="text-center mt-5 text-white fw-bold">ARGENTINA <br> PROGRAMA</h1>
+  </div>
+</div>
+<app-footer></app-footer>

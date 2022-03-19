@@ -1,0 +1,7 @@
+.logoPortada{
+  background-image: url("../../../assets/media/logoPortada.png");
+  object-fit: cover;
+  height: 40vh;
+
+}
+

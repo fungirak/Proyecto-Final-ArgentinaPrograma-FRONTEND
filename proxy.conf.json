@@ -1,0 +1,7 @@
+{
+  "/api/*":{
+    "target":"https://proyecto-final-arg-programa.herokuapp.com/",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

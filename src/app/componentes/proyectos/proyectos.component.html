@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center p-5">
+
+  <div class="row">
+    <div *ngFor="let miPortafolio of miPortafolio" class="col-md-4 col-sm-12">
+
+       <!-- MÓDULO BOTONES EDIT -->
+       <div *ngIf="modoEdicion===false">
+        <div class=" d-flex justify-content-end mt-8">
+          <div class="border border-1 border-dark rounded p-1 ">
+            <button class="btn p-0 m-2" (click)="onEdit()" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="modoEdicion===true">
+        <div class=" d-flex justify-content-end mt-8">
+          <div class="border border-1 border-dark rounded p-1 ">
+            <button class="btn p-0 m-2" (click)="onCancel()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+            <button class="btn p-0 m-2" (click)="onSave()" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+            <button class="btn p-0 m-2" (click)="onDelete()" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
+          </div>
+        </div>
+      </div>
+      <!-- FIN MÓDULO BOTONES EDIT -->
+
+
+
+
+          <div class="text-center m-2">
+            <h5 class="m-2">{{miPortafolio.titulo}}</h5>
+            <a href="" target="_blank" rel="noreferrer noopener">
+              <img src="assets/media/logoSms.jpg" alt="imagenproyecto" class="logosProyectos hoverProyectos">
+            </a>
+            <p class="p-2 m-3">{{miPortafolio.descripcion}}</p>
+          </div>
+
+    </div>
+  </div>
+
+</div>

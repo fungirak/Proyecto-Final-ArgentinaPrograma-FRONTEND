@@ -1,0 +1,24 @@
+.logo-sm{
+  width: 2em;
+  height: 2em;
+  border-radius: 10%;
+}
+
+.logo-arg{
+  width: 150px;
+  height: 50px;
+}
+
+
+
+.space-7{
+  width: 7em;
+}
+
+.space-3{
+  width: 3em;
+}
+
+.bg-green{
+  background: rgb(12, 207, 45);
+}

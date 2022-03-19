@@ -1,0 +1,55 @@
+
+
+
+
+  <div class=" justify-content-center p-5">
+
+    <div *ngFor="let miPortafolio of miPortafolio">
+
+      <!-- MÓDULO BOTONES EDIT -->
+      <div *ngIf="modoEdicion===false">
+        <div class=" d-flex justify-content-end mt-8">
+          <div class="border border-1 border-dark rounded p-1 ">
+            <button class="btn p-0 m-2" (click)="onEdit()" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="modoEdicion===true">
+        <div class=" d-flex justify-content-end mt-8">
+          <div class="border border-1 border-dark rounded p-1 ">
+            <button class="btn p-0 m-2" (click)="onCancel()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+            <button class="btn p-0 m-2" (click)="onSave()" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+            <button class="btn p-0 m-2" (click)="onDelete()" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
+          </div>
+        </div>
+      </div>
+      <!-- FIN MÓDULO BOTONES EDIT -->
+
+  <div class="d-flex m-5">
+    <div class="p-2 mt-2 m-4">
+      <img src="assets/media/logoEdu.png" alt="logotrabajo" class="logo-edu">
+    </div>
+
+    <div class="border rounded p-2 w-75">
+
+      <div class="m-3">
+        <h5 class="fw-bold mb-3">{{miPortafolio.institucion}}</h5>
+        <p class="fw-bold">TITULO</p>
+        <p>{{miPortafolio.titulo}}</p>
+        <p class="fw-bold">PERIODO</p>
+        <p>{{miPortafolio.periodo}}</p>
+        <p class="fw-bold">{{miPortafolio.estado}}</p>
+        <p>
+         {{miPortafolio.detalles}}
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+
+  </div>
+

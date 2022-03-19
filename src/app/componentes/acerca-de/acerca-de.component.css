@@ -1,0 +1,28 @@
+.logoGabi{
+  background-image: url("../../../assets/media/logoGabi.jpg");
+  width: 12em;
+  height: 12em;
+  border-radius: 50%;
+}
+
+
+
+.superponer{
+  margin-top: -16vh;
+}
+
+.logo-sm{
+  width: 1.2em;
+  height: 1.2em;
+  margin: .5em;
+}
+
+.mt-8{
+  margin-top: 8em;
+}
+
+.acomodar-pro{
+  margin-top: 60px;
+}
+
+

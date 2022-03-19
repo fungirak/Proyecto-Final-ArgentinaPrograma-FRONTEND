@@ -1,0 +1,222 @@
+
+<!--------------- BANNER --------------->
+
+<app-banner-superior></app-banner-superior>
+
+<!--------------- HEADER --------------->
+
+  <app-header></app-header>
+
+<!--------------- ACERCA DE  --------------->
+
+  <app-acerca-de></app-acerca-de>
+  <!--
+  <app-acerca-de
+    fullname="GABRIEL LAZZARINI"
+    posicion="FULL STACK DEVELOPER JR."
+    descripcion="• Estudiante Universitario de Ingeniería en Informática en la Universidad Nacional Del Litoral."
+    >
+  </app-acerca-de>
+  -->
+
+  <!--------------- EXPERIENCIAS --------------->
+
+  <div class="container shadow ">
+
+    <div class="row mt-5">
+      <h6 class="text-start p-1 bg-dark text-light  rounded border p-2">EXPERIENCIAS</h6>
+    </div>
+
+    <app-experiencia></app-experiencia>
+
+    <!--
+    <app-experiencia
+      empresa="SERVICIO TÉCNICO INDEPENDIENTE"
+      ubicacion="Santa Fe - Santa Fe - Argentina"
+      puesto="Técnico en Informática Profesional y Personal."
+      periodo="2018 - 2021"
+      actividades="Atención al cliente. / Reunión de requerimientos. / Ejecución de la solución. / Entrega de dispositivo. / + / Instalacion de sistemas operativos Windows y Linux a pedido. / Partición de discos duros para dual boot. / Optimización del sistema. / Eliminación de virus, programas molestos y archivos basura. / Limpieza de Hardware. / Recuperación de Archivos Borrados. / Instalación de Programas ofimáticos y a pedido. / Asesoramiento. / Ensamblado de Gabinetes Completos."
+    >
+    </app-experiencia>
+
+    <app-experiencia
+      empresa="PASANTÍA EN SECTOR INFORMÁTICA DEL HOSPITAL JOSÉ MARÍA CULLEN."
+      ubicacion="Santa Fe - Santa Fe - Argentina"
+      puesto="Técnico en Informática Profesional y Personal."
+      periodo="Junio - Noviembre 2017"
+      actividades="Instalacion de sistemas operativos Linux / Optimización del sistema. / Eliminación de virus, programas molestos y archivos basura. / Limpieza de Hardware. / Asistencia Remota / Cableados de red / Instalación de Programas ofimáticos. / Ensamblado de Gabinetes Completos."
+    >
+    </app-experiencia>
+    -->
+
+  </div>
+
+  <!--------------- EDUCACIÓN --------------->
+  <div class="container shadow ">
+
+    <div class="row mt-5">
+      <h6 class="text-start p-1 bg-dark text-light rounded border p-2">EDUCACION</h6>
+    </div>
+
+    <app-educacion></app-educacion>
+    <!--
+    <app-educacion
+        institucion="UNIVERSIDAD NACIONAL DEL LITORAL"
+        titulo="Ingeniería en Informática."
+        periodo="2021 - en curso"
+        estado="ESTUDIANTE"
+        detalles="Actualmente cursando el Ciclo Básico de la Carrera."
+      >
+      </app-educacion>
+
+      <app-educacion
+        institucion="E.E.T.P N° 480 'Manuel Belgrano'"
+        titulo="Técnico en Informática Profesional Y Personal."
+        periodo="2012 - 2017"
+        estado="GRADUADO"
+        detalles="Mejor Promedio"
+      >
+      </app-educacion>
+      -->
+
+  </div>
+
+  <!--------------- SKILLS --------------->
+  <div class="container shadow mt-5">
+    <div class="row">
+      <h6 class="text-start p-2 rounded border  bg-dark text-light ">SKILLS</h6>
+
+
+      <app-skills></app-skills>
+
+      <!--
+      <div class="d-flex justify-content-around col-12">
+        <div class="col-4">
+          <app-skills
+            color="text-danger"
+            skill="HTML"
+          >
+        </app-skills>
+        </div>
+
+        <div class="col-4">
+          <app-skills
+            color="text-primary"
+            skill="CSS"
+          >
+          </app-skills>
+        </div>
+
+        <div class="col-4">
+          <app-skills
+            color="text-warning"
+            skill="JAVASCRIPT"
+          >
+          </app-skills>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-around col-12">
+        <div class="col-4">
+          <app-skills
+            color="text-danger"
+            skill="JAVA"
+          >
+          </app-skills>
+        </div>
+
+        <div class="col-4">
+          <app-skills
+            color="text-primary"
+            skill="REACT"
+          >
+          </app-skills>
+        </div>
+
+        <div class="col-4">
+          <app-skills
+            color="text-danger"
+            skill="ANGULAR"
+          >
+          </app-skills>
+        </div>
+
+      </div>
+      -->
+    </div>
+  </div>
+  <!--------------- PROYECTOS --------------->
+  <div class="container shadow mt-5 mb-5">
+    <div class="row">
+      <h6 class="text-start p-2 rounded border  bg-dark text-light ">PROYECTOS</h6>
+
+      <div class="d-flex justify-content-around  m-2 p-2">
+          <app-proyectos></app-proyectos>
+      </div>
+          <!--
+          <app-proyectos
+            imagen="assets/media/logoSms.jpg"
+            link="https://www.fungirak.com/sms-app-react/"
+            titulo="SMS-APP"
+            descripcion="Formulario web que envía sms a mi teléfono."
+          >
+          </app-proyectos>
+        </div>
+
+        <div class="col-4 text-center">
+          <app-proyectos
+            imagen="assets/media/logoListaCompras.jpeg"
+            link="https://www.fungirak.com/Lista-De-Compras-conREACT/"
+            titulo="LISTA DE COMPRAS"
+            descripcion="Pequeña app hecha en React para gestionar una lista."
+          >
+          </app-proyectos>
+        </div>
+
+        <div class="col-4 text-center">
+          <app-proyectos
+            imagen="assets/media/logoInvitado.png"
+            link="https://www.fungirak.com/invitados-al-evento/"
+            titulo="LISTA DE INVITADOS"
+            descripcion="API CRUD libre para practicar formularios web reactivos con react."
+          >
+          </app-proyectos>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-around col-12 m-2 p-2">
+        <div class="col-4 text-center">
+          <app-proyectos
+            imagen="assets/media/logoHaceteSocio.jpeg"
+            link="https://www.fungirak.com/Hacete-Socio-COLON-UNION-ReactJS/"
+            titulo="HACETE SOCIO"
+            descripcion="Formulario ficticio que genera un carnet en el frontend."
+          >
+          </app-proyectos>
+        </div>
+
+        <div class="col-4 text-center">
+          <app-proyectos
+            imagen="assets/media/logoAvion.jpg"
+            link="https://www.fungirak.com/pasajeros-aerolineas-angular/"
+            titulo="PASAJEROS AEROLINEAS"
+            descripcion="Prueba técnica de rutas y apis externas con angular, muestra datos en una tabla y permite seleccionar un registro para ver más datos."
+          >
+          </app-proyectos>
+        </div>
+
+        <div class="col-4 text-center">
+          <app-proyectos
+            imagen="assets/media/logoPanelDelEstudiante.png"
+            link="https://www.fungirak.com/losAtajosDeFungi/"
+            titulo="PANEL DEL ESTUDIANTE"
+            descripcion="Toda la info reunida en un solo lugar relacionada con el primer año de la carrera."
+          >
+          </app-proyectos>
+        </div>
+        -->
+      </div>
+     </div>
+ <!--------------- FOOTER --------------->
+      <app-footer></app-footer>
