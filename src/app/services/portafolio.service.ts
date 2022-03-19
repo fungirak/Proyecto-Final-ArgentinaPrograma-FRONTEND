@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PortafolioService {
 
-  url = "http://localhost:8080/api/v1/";
+  url = "https://proyecto-final-arg-programa.herokuapp.com/api/v1/";
 
 
   constructor(private http:HttpClient) { }
