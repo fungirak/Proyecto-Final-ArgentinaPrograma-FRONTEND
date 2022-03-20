@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
 
 @Component({
@@ -9,23 +10,18 @@ import { PortafolioService } from '../../services/portafolio.service';
 export class AcercaDeComponent implements OnInit {
   miPortafolio:any;
   modoEdicion: boolean = false;
+  form: FormGroup;
 
 
-  // @Input() fullname: string = "" ;
-  // @Input() posicion: string = "" ;
-  // @Input() descripcion1: string = "" ;
-  // @Input() descripcion2: string = "" ;
-  // @Input() descripcion3: string = "" ;
-  // @Input() acercade: string[] =  [
-  //                              "GABRIEL LAZZARINI",
-  //                              "FULL STACK DEVELOPER JR.",
-  //                              "Estudiante Universitario de Ingeniería en Informática en la Universidad Nacional Del Litoral.",
-  //                              "Técnico en Informática Profesional y Personal.",
-  //                              "Programador Full Stack Jr."
-  //                              ];
 
+  constructor(public datosPortafolio: PortafolioService, private formBuilder: FormBuilder)  {
+    this.form=this.formBuilder.group({
+      fullname: [ '', [Validators.required, Validators.minLength(2)]],
+      posicion: ['', [Validators.required, Validators.minLength(2)]],
+      descripcion: ['', [Validators.required, Validators.minLength(2)]]
 
-  constructor(public datosPortafolio: PortafolioService)  { }
+    })
+   }
 
   ngOnInit(): void {
     this.datosPortafolio.obtenerDatosAcercaDe().subscribe(data => {
@@ -35,16 +31,40 @@ export class AcercaDeComponent implements OnInit {
     })
   }
 
-  onEdit(){
+
+  onCrear(event: Event){
     this.modoEdicion=true;
+
   }
 
-  onSave(){
-    this.modoEdicion=false;
+
+  onEdit( event: Event){
+    this.modoEdicion=true;
+    event.preventDefault;
+    this.datosPortafolio.putAcercaDe(this.form.value, this.form.value.id).subscribe(data => {
+      console.log("this.form.value: " , this.form.value);
+      console.log("AcercaDe method post Data", data);
+    });
   }
 
-  onDelete(){
+  onSaveNew(event: Event ){
+    event.preventDefault;
+    this.datosPortafolio.postAcercaDe(this.form.value).subscribe(data => {
+      console.log("this.form.value: " , this.form.value);
+      console.log("AcercaDe method post Data", data);
     this.modoEdicion=false;
+    //this.ruta.navigate(['/portafolio']);
+    });
+  }
+
+  onDelete(event: Event ){
+    this.modoEdicion=false;
+    event.preventDefault;
+    this.datosPortafolio.deleteAcercaDe(this.miPortafolio.id).subscribe(data => {
+    console.log("Borrando registro", data);
+    });
+
+
 
   }
 

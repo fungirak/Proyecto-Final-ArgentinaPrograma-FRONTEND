@@ -4,29 +4,75 @@
 
   <div class="justify-content-center p-5">
 
-    <div *ngFor="let miPortafolio of miPortafolio">
+    <!-- NUEVO REGISTRO -->
+    <div *ngIf="modoNuevoRegistro===false">
+      <div class="d-flex justify-content-center mb-4">
+        <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Experiencia</span></button>
+      </div>
+    </div>
 
-       <!-- MÓDULO BOTONES EDIT -->
-       <div *ngIf="modoEdicion===false">
-        <div class=" d-flex justify-content-end mt-8">
-          <div class="border border-1 border-dark rounded p-1 ">
-            <button class="btn p-0 m-1" (click)="onEdit()" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
-          </div>
+    <div *ngIf="modoNuevoRegistro===true">
+      <div class="d-flex">
+        <div class="p-1">
+          <button class="btn p-0 m-1" (click)="onCancelNuevoRegistro()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1">Cancelar</span></button>
+
+          <button class="btn p-0 m-1" (click)="onSaveNewNuevoRegistro($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1">Guardar</span></button>
+
         </div>
       </div>
+    </div>
 
-      <div *ngIf="modoEdicion===true">
-        <div class=" d-flex justify-content-end mt-8">
-          <div class="border border-1 border-dark rounded p-1 ">
-            <button class="btn p-0 m-1" (click)="onCancel()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-            <button class="btn p-0 m-1" (click)="onSave()" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+    <!-- FORMULARIO NEW -->
+      <div *ngIf="modoNuevoRegistro===true">
+        <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
 
-            <button class="btn p-0 m-1" (click)="onDelete()" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
-          </div>
+          <div class="text-center p-2 border shadow rounded ">
+
+            <h3 class="text-center text-info m-3">Nueva Experiencia</h3>
+
+              <div  class="m-2">
+                <div>
+                  <label for="empresa" class="form-label  fw-bold">Empresa:</label>
+                </div>
+                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="empresa"  formControlName="empresa" id="empresa" required>
+              </div>
+
+              <div  class="m-2 ">
+                <div>
+                  <label for="ubicacion" class="form-label  fw-bold">Ubicacion:</label>
+                </div>
+                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="ubicacion" formControlName="ubicacion" id="ubicacion" required>
+              </div>
+
+              <div  class="m-2 ">
+                <div>
+                  <label for="puesto" class="form-label  fw-bold">Puesto:</label>
+                </div>
+                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="puesto" formControlName="puesto" id="puesto" required >
+              </div>
+
+              <div  class="m-2">
+                <div class="">
+                  <label for="periodo"  class="form-label fw-bold">Periodo:</label>
+                </div>
+                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="periodo" formControlName="periodo" id="periodo"  required>
+              </div>
+
+              <div  class="m-2">
+                <div>
+                  <label for="actividades" class="form-label  fw-bold">Actividades:</label>
+                </div>
+                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="actividades" formControlName="actividades" id="actividades"  required >
+              </div>
         </div>
+
+
+        </form>
       </div>
-      <!-- FIN MÓDULO BOTONES EDIT -->
+       <!-- FIN FORMULARIO NEW -->
+
+      <div *ngFor="let miPortafolio of miPortafolio ; let i = index" [attr.data-index]="i">
 
 
 
@@ -38,19 +84,96 @@
 
       <div class="border rounded p-2 w-75">
 
+        <!-- MÓDULO BOTONES EDIT -->
+
+        <div *ngIf="modoEdicion===false">
+          <div class=" d-flex justify-content-end">
+            <div class="p-1">
+              <button class="btn p-0 m-1" (click)="onEdit(i, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+            </div>
+
+            <div class="p-1">
+              <button class="btn p-0 m-1" (click)="onDelete(i, $event)" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
+            </div>
+          </div>
+        </div>
+
+      <div *ngIf="modoEdicion===true">
+        <div class="d-flex justify-content-end">
+          <div class="p-1">
+            <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+            <button class="btn p-0 m-1" (click)="onSaveNew($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+          </div>
+        </div>
+      </div>
+      <!-- FIN MÓDULO BOTONES EDIT -->
+
+
+      <!-- FORMULARIO EDIT -->
+      <div *ngIf="modoEdicion===true">
+        <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
+
+          <div class="text-center p-2 border shadow rounded ">
+
+            <h3 class="text-center text-info m-3">Editar Experiencia</h3>
+
+              <div  class="m-2">
+                <div>
+                  <label for="empresa" class="form-label  fw-bold">Empresa:</label>
+                </div>
+                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="empresa"  formControlName="empresa" id="empresa" required>
+              </div>
+
+              <div  class="m-2 ">
+                <div>
+                  <label for="ubicacion" class="form-label  fw-bold">Ubicacion:</label>
+                </div>
+                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="ubicacion" formControlName="ubicacion" id="ubicacion" required>
+              </div>
+
+              <div  class="m-2 ">
+                <div>
+                  <label for="puesto" class="form-label  fw-bold">Puesto:</label>
+                </div>
+                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="puesto" formControlName="puesto" id="puesto" required >
+              </div>
+
+              <div  class="m-2">
+                <div class="">
+                  <label for="periodo"  class="form-label fw-bold">Periodo:</label>
+                </div>
+                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="periodo" formControlName="periodo" id="periodo"  required>
+              </div>
+
+              <div  class="m-2">
+                <div>
+                  <label for="actividades" class="form-label  fw-bold">Actividades:</label>
+                </div>
+                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="actividades" formControlName="actividades" id="actividades"  required >
+              </div>
+        </div>
+
+
+        </form>
+      </div>
+      <!-- FIN FORMULARIO EDIT -->
+
+
+      <div *ngIf="modoEdicion===false">
         <div class="m-3">
           <h5 class="fw-bold mb-3">{{miPortafolio.empresa}}</h5>
-          <p class="fw-bold">UBICACION</p>
-          <p>{{miPortafolio.ubicacion}}</p>
-          <p class="fw-bold">PUESTO</p>
-          <p>{{miPortafolio.puesto}}</p>
-          <p class="fw-bold">PERIODO</p>
-          <p>{{miPortafolio.periodo}}</p>
-          <p class="fw-bold">ACTIVIDADES PRINCIPALES</p>
-          <p>
-          {{miPortafolio.actividades}}
-          </p>
+          <p class="fw-normal">UBICACION</p>
+          <p class="fw-bold">{{miPortafolio.ubicacion}}</p>
+          <p class="fw-normal">PUESTO</p>
+          <p class="fw-bold">{{miPortafolio.puesto}}</p>
+          <p class="fw-normal">PERIODO</p>
+          <p class="fw-bold">{{miPortafolio.periodo}}</p>
+          <p class="fw-normal">ACTIVIDADES PRINCIPALES</p>
+          <p class="fw-bold">{{miPortafolio.actividades}}</p>
         </div>
+      </div>
       </div>
       </div>
     </div>

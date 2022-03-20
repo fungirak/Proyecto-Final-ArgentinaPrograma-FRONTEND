@@ -1,39 +1,136 @@
-<div class="d-flex justify-content-center p-5">
+<div class="justify-content-center p-5">
+
+    <!-- NUEVO REGISTRO -->
+    <div *ngIf="modoNuevoRegistro===false">
+      <div class="d-flex justify-content-center mb-4">
+        <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Proyecto</span></button>
+      </div>
+    </div>
+
+    <div *ngIf="modoNuevoRegistro===true">
+      <div class="d-flex">
+        <div class="p-1">
+          <button class="btn p-0 m-1" (click)="onCancelNuevoRegistro()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1">Cancelar</span></button>
+
+          <button class="btn p-0 m-1" (click)="onSaveNewNuevoRegistro($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1">Guardar</span></button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULARIO NEW -->
+    <div *ngIf="modoNuevoRegistro===true">
+      <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
+
+        <div class="text-center p-2 border shadow rounded ">
+
+          <h3 class="text-center text-info m-3">Nuevo Proyecto</h3>
+
+            <div  class="m-2">
+              <div>
+                <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
+              </div>
+              <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="descripcion"  formControlName="descripcion" id="descripcion" required>
+            </div>
+
+            <div  class="m-2 ">
+              <div>
+                <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
+              </div>
+              <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="imagen" formControlName="imagen" id="imagen" required>
+            </div>
+
+            <div  class="m-2 ">
+              <div>
+                <label for="titulo" class="form-label  fw-bold">Titulo:</label>
+              </div>
+              <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="titulo" formControlName="titulo" id="titulo" required >
+            </div>
+
+
+      </div>
+
+
+      </form>
+    </div>
+    <!-- FIN FORMULARIO NEW -->
 
   <div class="row">
-    <div *ngFor="let miPortafolio of miPortafolio" class="col-md-4 col-sm-12">
-
-       <!-- MÓDULO BOTONES EDIT -->
-       <div *ngIf="modoEdicion===false">
-        <div class=" d-flex justify-content-end mt-8">
-          <div class="border border-1 border-dark rounded p-1 ">
-            <button class="btn p-0 m-2" (click)="onEdit()" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
-          </div>
-        </div>
-      </div>
-
-      <div *ngIf="modoEdicion===true">
-        <div class=" d-flex justify-content-end mt-8">
-          <div class="border border-1 border-dark rounded p-1 ">
-            <button class="btn p-0 m-2" (click)="onCancel()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
-
-            <button class="btn p-0 m-2" (click)="onSave()" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
-
-            <button class="btn p-0 m-2" (click)="onDelete()" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
-          </div>
-        </div>
-      </div>
-      <!-- FIN MÓDULO BOTONES EDIT -->
+    <div *ngFor="let miPortafolio of miPortafolio ; let i = index" [attr.data-index]="i" class="col-md-4 col-sm-12">
 
 
+          <div class="text-center m-2 border rounded p-2">
+
+                    <!-- MÓDULO BOTONES EDIT -->
+
+            <div *ngIf="modoEdicion===false">
+              <div class=" d-flex justify-content-end">
+                <div class="p-1">
+                  <button class="btn p-0 m-1" (click)="onEdit(i, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+                </div>
+
+                <div class="p-1">
+                  <button class="btn p-0 m-1" (click)="onDelete(i, $event)" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="modoEdicion===true">
+              <div class="d-flex justify-content-end">
+                <div class="p-1">
+                  <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+                  <button class="btn p-0 m-1" (click)="onSaveNew($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+                </div>
+              </div>
+            </div>
+            <!-- FIN MÓDULO BOTONES EDIT -->
+
+             <!-- FORMULARIO EDIT -->
+            <div *ngIf="modoEdicion===true">
+              <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
+
+                <div class="text-center p-2 border shadow rounded ">
+
+                  <h3 class="text-center text-info m-3">Editar Proyecto</h3>
+
+                    <div  class="m-2">
+                      <div>
+                        <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
+                      </div>
+                      <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="descripcion"  formControlName="descripcion" id="descripcion" required>
+                    </div>
+
+                    <div  class="m-2 ">
+                      <div>
+                        <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
+                      </div>
+                      <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="imagen" formControlName="imagen" id="imagen" required>
+                    </div>
+
+                    <div  class="m-2 ">
+                      <div>
+                        <label for="titulo" class="form-label  fw-bold">Título:</label>
+                      </div>
+                      <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="titulo" formControlName="titulo" id="titulo" required>
+                    </div>
 
 
-          <div class="text-center m-2">
-            <h5 class="m-2">{{miPortafolio.titulo}}</h5>
-            <a href="" target="_blank" rel="noreferrer noopener">
-              <img src="assets/media/logoSms.jpg" alt="imagenproyecto" class="logosProyectos hoverProyectos">
-            </a>
-            <p class="p-2 m-3">{{miPortafolio.descripcion}}</p>
+              </div>
+
+
+              </form>
+            </div>
+             <!-- FIN FORMULARIO EDIT -->
+
+            <div *ngIf="modoEdicion===false">
+                <h5 class="m-2">{{miPortafolio.titulo}}</h5>
+                <a href="" target="_blank" rel="noreferrer noopener">
+                  <img src={{miPortafolio.imagen}} alt="imagenproyecto" class="logosProyectos hoverProyectos">
+                </a>
+                <p class="p-2 m-3">{{miPortafolio.descripcion}}</p>
+            </div>
           </div>
 
     </div>

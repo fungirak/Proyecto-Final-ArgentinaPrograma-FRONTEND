@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
 
 @Component({
@@ -9,14 +10,19 @@ import { PortafolioService } from '../../services/portafolio.service';
 export class ProyectosComponent implements OnInit {
   miPortafolio:any;
   modoEdicion: boolean = false;
-
- // @Input() imagen: string = "";
- // @Input() titulo: string = "";
- //@Input() descripcion: string = "";
- // @Input() link: string = "";
+  modoNuevoRegistro: boolean = false;
+  form: FormGroup;
 
 
-  constructor(public datosPortafolio: PortafolioService) { }
+
+  constructor(public datosPortafolio: PortafolioService, private formBuilder: FormBuilder) {
+    this.form=this.formBuilder.group({
+      descripcion: [ '', [Validators.required, Validators.minLength(2)]],
+      imagen: ['', [Validators.required, Validators.minLength(2)]],
+      titulo: ['', [Validators.required, Validators.minLength(2)]],
+
+    })
+   }
 
   ngOnInit(): void {
     this.datosPortafolio.obtenerDatosProyectos().subscribe(data => {
@@ -26,21 +32,59 @@ export class ProyectosComponent implements OnInit {
     })
   }
 
-  onEdit(){
+
+  onCrear(event: Event){
+    this.modoNuevoRegistro=true;
+  }
+
+
+  onEdit(i: any, event: Event ){
     this.modoEdicion=true;
+    event.preventDefault;
+    this.datosPortafolio.putProyecto(this.form.value, this.form.value[i].id).subscribe(data => {
+      console.log("this.form.value: " , this.form.value);
+      console.log("PROYECTO method PUT Data Editada", data);
+    });
   }
 
-  onSave(){
+  onSaveNew(event: Event ){
+    event.preventDefault;
+    this.datosPortafolio.postProyecto(this.form.value).subscribe(data => {
+      console.log("this.form.value: " , this.form.value);
+      console.log("PROYECTO method POST Data Enviada", data);
+    this.modoEdicion=false;
+    //this.ruta.navigate(['/portafolio']);
+    });
+  }
+
+  onSaveNewNuevoRegistro(event: Event ){
+    event.preventDefault;
+    this.datosPortafolio.postProyecto(this.form.value).subscribe(data => {
+      console.log("this.form.value: " , this.form.value);
+      console.log("PROYECTO method POST Data Enviada", data);
+    this.modoNuevoRegistro=false;
+    //this.ruta.navigate(['/portafolio']);
+    });
+  }
+
+
+  onCancelNuevoRegistro(){
+    this.modoNuevoRegistro=false;
+  }
+
+
+  onCancel(i: any, event: Event){
     this.modoEdicion=false;
   }
 
-  onDelete(){
-    this.modoEdicion=false;
 
+  onDelete( i: any, event: Event ){
+    this.modoEdicion=false;
+    event.preventDefault;
+    this.datosPortafolio.deleteProyecto(this.miPortafolio[i].id).subscribe(data => {
+    console.log("Borrando registro", data);
+    });
   }
 
-  onCancel(){
-    this.modoEdicion=false;
-  }
 
 }

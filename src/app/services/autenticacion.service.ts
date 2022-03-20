@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AutenticacionService {
 
-  url="https://proyecto-final-arg-programa.herokuapp.com/auth/login";
+  url="https://proyecto-final-arg-prog.herokuapp.com/auth/login";
   usuario: BehaviorSubject<any>;
 
 

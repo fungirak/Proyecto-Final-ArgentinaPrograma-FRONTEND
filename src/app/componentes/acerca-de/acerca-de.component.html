@@ -3,6 +3,9 @@
 
   <div class="d-flex justify-content-around">
     <div class="">
+      <div class="border border-1 border-dark rounded p-1 ">
+        <button class="btn p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1"></span></button>
+      </div>
 
       <img src="assets/media/logoGabi.jpg" alt="logogabi" class="logoGabi shadow">
 
@@ -10,15 +13,23 @@
       <div class="text-center fw-bold mt-4">
 
         <div *ngIf="modoEdicion===true">
-          <form action="" class="col-12">
+          <form  class="col-12" [formGroup]="form" >
 
-            <div  class="m-1">
-              <input type="text" class="p-1" placeholder="Tu Nombre" formControlName="input_fullname">
+            <div  class="m-1 ">
+              <label for="fullname" class="form-label">Nombre y Apellido:</label>
+              <input type="text" class="p-1"  formControlName="fullname" id="fullname" >
             </div>
 
             <div  class="m-1">
-              <input type="text"  class="" placeholder="Tu Empleo" formControlName="input_posicion">
+              <label for="posicion"  class="form-label">Puesto Actual:</label>
+              <input type="text"  class=""  formControlName="posicion" id="posicion" >
             </div>
+
+            <div  class="m-1 ">
+              <label for="descripcion" class="form-label">Algo sobre ti:</label>
+              <input type="text" class="col-12"  formControlName="descripcion" >
+            </div>
+
 
           </form>
         </div>
@@ -34,21 +45,24 @@
 
       <!-- MÓDULO BOTONES EDIT -->
       <div *ngIf="modoEdicion===false">
-        <div class=" d-flex justify-content-end mt-8">
+        <div class=" d-flex justify-content-end">
           <div class="border border-1 border-dark rounded p-1 ">
-            <button class="btn p-0 m-2" (click)="onEdit()" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+            <button class="btn p-0 m-1" (click)="onEdit($event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+          </div>
+
+          <div class="border border-1 border-dark rounded p-1 ">
+             <button class="btn p-0 m-1" (click)="onDelete($event)" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
           </div>
         </div>
       </div>
 
       <div *ngIf="modoEdicion===true">
-        <div class=" d-flex justify-content-end mt-8">
+        <div class=" d-flex justify-content-end">
           <div class="border border-1 border-dark rounded p-1 ">
-            <button class="btn p-0 m-2" (click)="onCancel()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+            <button class="btn p-0 m-1" (click)="onCancel()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-            <button class="btn p-0 m-2" (click)="onSave()" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+            <button class="btn p-0 m-1" (click)="onSaveNew($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-            <button class="btn p-0 m-2" (click)="onDelete()" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
           </div>
         </div>
       </div>
@@ -57,27 +71,12 @@
       <div class="fw-normal  acomodar-pro">
         <h6 class="text-start p-2 rounded border  bg-dark text-light">ACERCA DE</h6>
 
-        <div *ngIf="modoEdicion===true">
-          <form action="" class="">
 
-            <div  class="m-1 ">
-              <input type="text" class="col-12" placeholder="Algo sobre ti 1" formControlName="input_descripcion1">
-            </div>
-
-            <div  class="m-1">
-              <input type="text"  class="" placeholder="Tu Nombre" placeholder="Algo sobre ti 2" formControlName="input_descripcion2">
-            </div>4
-
-            <div  class="m-1">
-              <input type="text"  class="" placeholder="Tu Nombre" placeholder="Algo sobre ti 3" formControlName="input_descripcion3">
-            </div>
-
-          </form>
-        </div>
-
+          <!-- MÓDULO VISUALIZACIÓN ESTÁTICA -->
         <div *ngIf="modoEdicion===false">
           <p class="ms-2">{{miPortafolio.descripcion}}</p>
         </div>
+         <!-- FIN MÓDULO VISUALIZACIÓN ESTÁTICA -->
 
       </div>
 

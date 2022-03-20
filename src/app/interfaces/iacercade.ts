@@ -1,7 +1,5 @@
-export interface Acercade {
+export interface IAcercaDe {
   fullname: String;
   posicion: String;
-  descripcion1: String;
-  descripcion2: String;
-  descripcion3: String;
+  descripcion: String;
 }
