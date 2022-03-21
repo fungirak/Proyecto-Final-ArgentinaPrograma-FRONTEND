@@ -39,13 +39,10 @@ export class AcercaDeComponent implements OnInit {
   }
 
 
-  onEdit( id: any, event: Event ){
-    this.modoEdicion=true;
-    event.preventDefault;
-    this.datosPortafolio.putAcercaDe(this.form.value, this.form.value.id).subscribe(data => {
-      console.log("this.form.value: " , this.form.value);
-      console.log("AcercaDe method POST Data", data);
-    });
+  onEdit(id: any, event: Event ){
+    this.modoEdicion= true;
+    console.log("this.form.value: " , this.form.value);
+    console.log("id: " , id);
   }
 
   onSaveEdit( id: any, event: Event ){
@@ -53,6 +50,11 @@ export class AcercaDeComponent implements OnInit {
     this.datosPortafolio.putAcercaDe(this.form.value, id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("AcercaDe method PUT Data", data);
+
+      this.datosPortafolio.obtenerDatosAcercaDe().subscribe(data => {
+        this.miPortafolio=data[0];
+      });
+
     this.modoEdicion=false;
     });
   }

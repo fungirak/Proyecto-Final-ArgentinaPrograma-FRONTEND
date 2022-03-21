@@ -14,12 +14,12 @@
 
     <div class="">
 
-      <!-- NUEVO REGISTRO -->
-    <div *ngIf="modoNuevoRegistro===false " class="mt-2" >
-      <div class="d-flex justify-content-center mb-3 acomodar-pro-2">
-        <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Descripción Personal</span></button>
-      </div>
-    </div>
+      <!-- NUEVO REGISTRO (no permitido )
+        <div *ngIf="modoNuevoRegistro===false " class="mt-2" >
+          <div class="d-flex justify-content-center mb-3 acomodar-pro-2">
+            <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Descripción Personal</span></button>
+          </div>
+        </div>
 
     <div *ngIf="modoNuevoRegistro===true">
       <div class="d-flex">
@@ -32,7 +32,9 @@
       </div>
     </div>
 
-    <!------    FORMULARIO NEW    ------>
+     -->
+
+    <!------    FORMULARIO NEW   (no permitido)
     <div *ngIf="modoNuevoRegistro===true" >
       <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
 
@@ -67,7 +69,9 @@
 
       </form>
     </div>
-    <!------    FORMULARIO NEW    ------>
+
+
+        FORMULARIO NEW    ------>
 
 
       <div class="text-center fw-bold mt-4 ">
@@ -78,20 +82,22 @@
 
         <div *ngIf="modoEdicion===false">
           <div class=" d-flex justify-content-end">
-            <div class="p-1">
+            <div class="p-1 mt-8">
               <button class="btn p-0 m-1" (click)="onEdit( miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
             </div>
 
+            <!-- Eliminar Descripcion ( No permitido )
             <div class="p-1">
               <button class="btn p-0 m-1" (click)="onDelete(miPortafolio.id, $event)" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
             </div>
+            -->
           </div>
         </div>
 
 
 
       <div *ngIf="modoEdicion===true">
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mt-10">
           <div class="p-1">
             <button class="btn p-0 m-1" (click)="onCancel($event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
@@ -103,7 +109,7 @@
       <!-- FIN MÓDULO BOTONES EDIT -->
 
       <!------    FORMULARIO EDIT   ------>
-    <div *ngIf="modoEdicion===true" >
+    <div *ngIf="modoEdicion===true">
       <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
 
         <div class="text-center p-2 border shadow rounded ">
