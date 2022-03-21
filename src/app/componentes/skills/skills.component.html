@@ -60,7 +60,7 @@
             <div *ngIf="modoEdicion===false">
               <div class=" d-flex justify-content-end">
                 <div class="p-1">
-                  <button class="btn p-0 m-1" (click)="onEdit(i, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+                  <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
                 </div>
 
                 <div class="p-1">
@@ -74,7 +74,7 @@
               <div class="p-1">
                 <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-                <button class="btn p-0 m-1" (click)="onSaveNew($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+                <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
 
               </div>
             </div>
@@ -94,14 +94,14 @@
                     <div>
                       <label for="imagen" class="form-label  fw-bold">Imagen:</label>
                     </div>
-                    <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="imagen"  formControlName="imagen" id="imagen" required>
+                    <input type="text" [(ngModel)]="miPortafolio.imagen" class="col-8 p-2 mb-2 border rounded border-1" placeholder="imagen"  formControlName="imagen" id="imagen" required>
                   </div>
 
                   <div  class="m-2 ">
                     <div>
                       <label for="tecnologia" class="form-label  fw-bold">Tecnología:</label>
                     </div>
-                    <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="tecnologia" formControlName="tecnologia" id="tecnologia" required>
+                    <input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-8 p-2 mb-2 border rounded border-1" placeholder="tecnologia" formControlName="tecnologia" id="tecnologia" required>
                   </div>
 
 

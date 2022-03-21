@@ -7,7 +7,7 @@
     <!-- NUEVO REGISTRO -->
     <div *ngIf="modoNuevoRegistro===false">
       <div class="d-flex justify-content-center mb-4">
-        <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Educación</span></button>
+        <button class="btn  border-0 p-2 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Educación</span></button>
       </div>
     </div>
 
@@ -91,7 +91,7 @@
         <div *ngIf="modoEdicion===false">
           <div class=" d-flex justify-content-end">
             <div class="p-1">
-              <button class="btn p-0 m-1" (click)="onEdit(i, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+              <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
             </div>
 
             <div class="p-1">
@@ -106,7 +106,7 @@
           <div class="p-1">
             <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-            <button class="btn p-0 m-1" (click)="onSaveNew($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+            <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
 
           </div>
         </div>
@@ -125,35 +125,35 @@
                 <div>
                   <label for="institucion" class="form-label  fw-bold">Institucion:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Institucion"  formControlName="institucion" id="institucion" required>
+                <input type="text" [(ngModel)]="miPortafolio.institucion" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Institucion"  formControlName="institucion" id="institucion" required>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="titulo" class="form-label  fw-bold">Titulo:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Titulo" formControlName="titulo" id="titulo" required>
+                <input type="text" [(ngModel)]="miPortafolio.titulo" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Titulo" formControlName="titulo" id="titulo" required>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="periodo" class="form-label  fw-bold">Periodo:</label>
                 </div>
-                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="Periodo" formControlName="periodo" id="periodo" required >
+                <input type="text" [(ngModel)]="miPortafolio.periodo" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Periodo" formControlName="periodo" id="periodo" required >
               </div>
 
               <div  class="m-2">
                 <div class="">
                   <label for="estado"  class="form-label fw-bold">Estado:</label>
                 </div>
-                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="Estado" formControlName="estado" id="estado"  required>
+                <input type="text" [(ngModel)]="miPortafolio.estado"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="Estado" formControlName="estado" id="estado"  required>
               </div>
 
               <div  class="m-2">
                 <div>
                   <label for="detalles" class="form-label  fw-bold">Detalles:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Detalles" formControlName="detalles" id="detalles"  required >
+                <input type="text" [(ngModel)]="miPortafolio.detalles" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Detalles" formControlName="detalles" id="detalles"  required >
               </div>
         </div>
 

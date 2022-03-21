@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-acerca-de',
@@ -10,7 +12,9 @@ import { PortafolioService } from '../../services/portafolio.service';
 export class AcercaDeComponent implements OnInit {
   miPortafolio:any;
   modoEdicion: boolean = false;
+  modoNuevoRegistro: boolean = false;
   form: FormGroup;
+  alertaDelete: string = "¿Eliminar información AcercaDe?"
 
 
 
@@ -25,50 +29,85 @@ export class AcercaDeComponent implements OnInit {
 
   ngOnInit(): void {
     this.datosPortafolio.obtenerDatosAcercaDe().subscribe(data => {
-      console.log("Datos Personales: " + JSON.stringify(data));
       this.miPortafolio=data[0];
-      console.log(data);
     })
   }
 
-
   onCrear(event: Event){
-    this.modoEdicion=true;
+    this.modoNuevoRegistro=true;
 
   }
 
 
-  onEdit( event: Event){
+  onEdit( id: any, event: Event ){
     this.modoEdicion=true;
     event.preventDefault;
     this.datosPortafolio.putAcercaDe(this.form.value, this.form.value.id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
-      console.log("AcercaDe method post Data", data);
+      console.log("AcercaDe method POST Data", data);
     });
   }
 
-  onSaveNew(event: Event ){
+  onSaveEdit( id: any, event: Event ){
+    event.preventDefault;
+    this.datosPortafolio.putAcercaDe(this.form.value, id).subscribe(data => {
+      console.log("this.form.value: " , this.form.value);
+      console.log("AcercaDe method PUT Data", data);
+    this.modoEdicion=false;
+    });
+  }
+
+  onSaveNewNuevoRegistro(event: Event ){
     event.preventDefault;
     this.datosPortafolio.postAcercaDe(this.form.value).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("AcercaDe method post Data", data);
-    this.modoEdicion=false;
-    //this.ruta.navigate(['/portafolio']);
+    this.modoNuevoRegistro=false;
+    });
+
+    this.datosPortafolio.obtenerDatosAcercaDe().subscribe(data => {
+      this.miPortafolio=data;
     });
   }
 
-  onDelete(event: Event ){
+  onDelete(id: any,event: Event ){
     this.modoEdicion=false;
     event.preventDefault;
-    this.datosPortafolio.deleteAcercaDe(this.miPortafolio.id).subscribe(data => {
-    console.log("Borrando registro", data);
-    });
+    Swal.fire({
+      title: '¿Desea Eliminar la información Acerca De?',
+      text: "No podrá revertir los cambios.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'ELIMINAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.datosPortafolio.deleteAcercaDe(id).subscribe(data => {
+          console.log("Borrando registro", data);
+
+          this.datosPortafolio.obtenerDatosAcercaDe().subscribe(data => {
+            this.miPortafolio=data;
+          });
+
+          });
 
 
+        Swal.fire(
+          'ELIMINADO',
+          'La Información Acerca De ha sido eliminada con éxito.',
+          'success'
+        )
+      }
+    })
 
   }
 
-  onCancel(){
+  onCancelNuevoRegistro(){
+    this.modoNuevoRegistro=false;
+  }
+
+  onCancel(event: Event){
     this.modoEdicion=false;
   }
 

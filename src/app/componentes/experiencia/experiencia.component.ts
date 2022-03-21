@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-experiencia',
@@ -35,13 +36,10 @@ export class ExperienciaComponent implements OnInit {
     })
   }
 
-  onEdit(i: any, event: Event ){
+  onEdit(id: any, event: Event ){
     this.modoEdicion=true;
-    event.preventDefault;
-    this.datosPortafolio.putExperiencia(this.form.value, this.form.value[i].id).subscribe(data => {
-      console.log("this.form.value: " , this.form.value);
-      console.log("EXPERIENCIA method PUT Data Editada", data);
-    });
+    console.log("this.form.value: " , this.form.value);
+    console.log("id: " , id);
   }
 
 
@@ -50,14 +48,14 @@ export class ExperienciaComponent implements OnInit {
   }
 
 
-  onSaveNew(event: Event ){
+  onSaveEdit( id: any, event: Event ){
     event.preventDefault;
-    this.datosPortafolio.postExperiencia(this.form.value).subscribe(data => {
+    this.datosPortafolio.putExperiencia(this.form.value, id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
-      console.log("EXPERIENCIA method POST Data Enviada", data);
-    this.modoEdicion=false;
-    //this.ruta.navigate(['/portafolio']);
+      console.log("id: " , id);
+      console.log("EXPERIENCIA method PUT Data Editada", data);
     });
+    this.modoEdicion=false;
   }
 
   onSaveNewNuevoRegistro(event: Event ){
@@ -66,7 +64,10 @@ export class ExperienciaComponent implements OnInit {
       console.log("this.form.value: " , this.form.value);
       console.log("EXPERIENCIA method POST Data Enviada", data);
     this.modoNuevoRegistro=false;
-    //this.ruta.navigate(['/portafolio']);
+    });
+
+    this.datosPortafolio.obtenerDatosExperiencia().subscribe(data => {
+      this.miPortafolio=data;
     });
   }
 
@@ -83,10 +84,32 @@ export class ExperienciaComponent implements OnInit {
   onDelete( i: any, event: Event ){
     this.modoEdicion=false;
     event.preventDefault;
-    console.log("sacar id del item a eliminar: ", this.miPortafolio);
-    this.datosPortafolio.deleteExperiencia(this.miPortafolio[i].id).subscribe(data => {
-    console.log("Borrando registro", data);
-    });
+    Swal.fire({
+      title: '¿Desea Eliminar el item de Experiencia?',
+      text: "No podrá revertir los cambios.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'ELIMINAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.datosPortafolio.deleteExperiencia(this.miPortafolio[i].id).subscribe(data => {
+          console.log("Borrando registro", data);
+
+          this.datosPortafolio.obtenerDatosExperiencia().subscribe(data => {
+            this.miPortafolio=data;
+          });
+
+          });
+
+        Swal.fire(
+          'ELIMINADO',
+          'Item Experiencia eliminado con éxito.',
+          'success'
+        )
+      }
+    })
   }
 
 }

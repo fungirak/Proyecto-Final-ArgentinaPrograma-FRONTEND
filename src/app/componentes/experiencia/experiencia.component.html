@@ -89,7 +89,7 @@
         <div *ngIf="modoEdicion===false">
           <div class=" d-flex justify-content-end">
             <div class="p-1">
-              <button class="btn p-0 m-1" (click)="onEdit(i, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+              <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
             </div>
 
             <div class="p-1">
@@ -103,7 +103,7 @@
           <div class="p-1">
             <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-            <button class="btn p-0 m-1" (click)="onSaveNew($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+            <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id , $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
 
           </div>
         </div>
@@ -123,35 +123,35 @@
                 <div>
                   <label for="empresa" class="form-label  fw-bold">Empresa:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="empresa"  formControlName="empresa" id="empresa" required>
+                <input type="text" [(ngModel)]="miPortafolio.empresa" class="col-8 p-2 mb-2 border rounded border-1" placeholder="empresa"  formControlName="empresa" id="empresa" required>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="ubicacion" class="form-label  fw-bold">Ubicacion:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="ubicacion" formControlName="ubicacion" id="ubicacion" required>
+                <input type="text" [(ngModel)]="miPortafolio.ubicacion" class="col-8 p-2 mb-2 border rounded border-1" placeholder="ubicacion" formControlName="ubicacion" id="ubicacion" required>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="puesto" class="form-label  fw-bold">Puesto:</label>
                 </div>
-                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="puesto" formControlName="puesto" id="puesto" required >
+                <input type="text" [(ngModel)]="miPortafolio.puesto" class="col-8 p-2 mb-2 border rounded border-1" placeholder="puesto" formControlName="puesto" id="puesto" required >
               </div>
 
               <div  class="m-2">
                 <div class="">
                   <label for="periodo"  class="form-label fw-bold">Periodo:</label>
                 </div>
-                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="periodo" formControlName="periodo" id="periodo"  required>
+                <input type="text" [(ngModel)]="miPortafolio.periodo"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="periodo" formControlName="periodo" id="periodo"  required>
               </div>
 
               <div  class="m-2">
                 <div>
                   <label for="actividades" class="form-label  fw-bold">Actividades:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="actividades" formControlName="actividades" id="actividades"  required >
+                <input type="text" [(ngModel)]="miPortafolio.actividades" class="col-8 p-2 mb-2 border rounded border-1" placeholder="actividades" formControlName="actividades" id="actividades"  required >
               </div>
         </div>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-skills',
@@ -10,6 +11,7 @@ import { PortafolioService } from '../../services/portafolio.service';
 export class SkillsComponent implements OnInit {
   miPortafolio:any;
   modoEdicion: boolean = false;
+  modoEdicionArray: boolean[] = [];
   modoNuevoRegistro: boolean = false;
   form: FormGroup;
 
@@ -25,34 +27,35 @@ export class SkillsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.datosPortafolio.obtenerDatosSkills().subscribe(data => {
+     this.datosPortafolio.obtenerDatosSkills().subscribe(data => {
       console.log("Datos Personales: " + JSON.stringify(data));
       this.miPortafolio=data;
       console.log(data);
-    })
+    });
+
   }
+
+
+
 
   onCrear(event: Event){
     this.modoNuevoRegistro=true;
   }
 
-  onEdit(i: any, event: Event ){
+  onEdit(id: any, event: Event ){
     this.modoEdicion=true;
-    event.preventDefault;
-    this.datosPortafolio.putSkill(this.form.value, this.form.value[i].id).subscribe(data => {
-      console.log("this.form.value: " , this.form.value);
-      console.log("SKILL method PUT Data Editada", data);
-    });
+    console.log("this.form.value: " , this.form.value);
+    console.log("id: " , id);
   }
 
-  onSaveNew(event: Event ){
+  onSaveEdit( id: any, event: Event ){
     event.preventDefault;
-    this.datosPortafolio.postSkill(this.form.value).subscribe(data => {
+    this.datosPortafolio.putSkill(this.form.value, id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
-      console.log("SKILL method POST Data Enviada", data);
-    this.modoEdicion=false;
-    //this.ruta.navigate(['/portafolio']);
+      console.log("id: " , id);
+      console.log("SKILL method PUT Data Editada", data);
     });
+    this.modoEdicion=false;
   }
 
   onSaveNewNuevoRegistro(event: Event ){
@@ -61,8 +64,12 @@ export class SkillsComponent implements OnInit {
       console.log("this.form.value: " , this.form.value);
       console.log("SKILL method POST Data Enviada", data);
     this.modoNuevoRegistro=false;
-    //this.ruta.navigate(['/portafolio']);
     });
+
+    this.datosPortafolio.obtenerDatosSkills().subscribe(data => {
+      this.miPortafolio=data;
+    });
+
   }
 
 
@@ -78,9 +85,32 @@ export class SkillsComponent implements OnInit {
   onDelete( i: any, event: Event ){
     this.modoEdicion=false;
     event.preventDefault;
-    this.datosPortafolio.deleteSkill(this.miPortafolio[i].id).subscribe(data => {
-    console.log("Borrando registro", data);
-    });
+    Swal.fire({
+      title: '¿Desea Eliminar el item de Skill?',
+      text: "No podrá revertir los cambios.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'ELIMINAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.datosPortafolio.deleteSkill(this.miPortafolio[i].id).subscribe(data => {
+          console.log("Borrando registro", data);
+
+          this.datosPortafolio.obtenerDatosSkills().subscribe(data => {
+            this.miPortafolio=data;
+          });
+
+          });
+
+        Swal.fire(
+          'ELIMINADO',
+          'Item Skill eliminado con éxito.',
+          'success'
+        )
+      }
+    })
   }
 
 

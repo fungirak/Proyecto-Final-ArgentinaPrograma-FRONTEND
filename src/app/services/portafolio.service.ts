@@ -23,7 +23,6 @@ export class PortafolioService {
   // *********************************************************************
 
   obtenerDatosAcercaDe():Observable<any> {
-    console.log("******************** Inicio de la búsqueda de datos del usuario ***********************");
     return this.http.get<any>( this.url + 'acerca_de' );
   }
 
@@ -76,8 +75,8 @@ export class PortafolioService {
     return this.http.put<any>( this.url + 'acerca_de/' + id, AcercaDe , { headers: this.headers} );
   }
 
-  putExperiencia( Experiencia: any, id: Number  ):Observable<any> {
-    return this.http.put<any>( this.url + 'experiencias/' + id, Experiencia , { headers: this.headers} );
+  putExperiencia( Experiencia: any, i: Number  ):Observable<any> {
+    return this.http.put<any>( this.url + 'experiencias/' + i, Experiencia , { headers: this.headers} );
   }
 
   putEducacion( Educacion: any, id: Number  ):Observable<any> {
