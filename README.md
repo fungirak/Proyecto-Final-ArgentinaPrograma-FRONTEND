@@ -1,3 +1,38 @@
+# PROYECTO FINAL ARGENTINA PROGRAMA
+# MÓDULO "YO PROGRAMO" EDICIÓN 2021/2022
+# by GABRIEL LAZZARINI
+
+# FRONTEND Hecho con ANGULAR Framework.
+
+ALGUNOS DETALLES...
+
+# Componentes Principales : 
+      • portafolio
+      • login
+      • register
+      
+# Otros Componentes:
+     • banner-superior
+     • header
+     • acerca-de
+     • educacion
+     • experiencia
+     • proyectos
+     • skills
+     • footer
+     • page-not-found
+     
+# SERVICES 
+     • autentication.service.ts
+     • interceptor.service.ts
+     • portafolio.service.ts       
+
+
+  SISTEMA FRONTEND DESPLEGADO EN FIREBASE.
+  ESTE PROYECTO SE ENCUENTRA EN ETAPA DE FINALIZACIÓN.
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
