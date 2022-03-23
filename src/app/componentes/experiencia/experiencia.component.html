@@ -2,11 +2,11 @@
 
 
 
-  <div class="justify-content-center p-5">
+  <div class="justify-content-center p-2 w-100">
 
     <!-- NUEVO REGISTRO -->
     <div *ngIf="modoNuevoRegistro===false">
-      <div class="d-flex justify-content-center mb-4">
+      <div class="d-flex justify-content-center mb-4 m-4">
         <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Experiencia</span></button>
       </div>
     </div>
@@ -27,7 +27,7 @@
       <div *ngIf="modoNuevoRegistro===true">
         <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
 
-          <div class="text-center p-2 border shadow rounded ">
+          <div class="text-center p-2 border shadow rounded">
 
             <h3 class="text-center text-info m-3">Nueva Experiencia</h3>
 
@@ -35,35 +35,35 @@
                 <div>
                   <label for="empresa" class="form-label  fw-bold">Empresa:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="empresa"  formControlName="empresa" id="empresa" required>
+               <span>🔵    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary" placeholder="🌐 Empresa"  formControlName="empresa" id="empresa" required autofocus>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="ubicacion" class="form-label  fw-bold">Ubicacion:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="ubicacion" formControlName="ubicacion" id="ubicacion" required>
+                <span>🔵    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary" placeholder="📍Ubicacion" formControlName="ubicacion" id="ubicacion" required>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="puesto" class="form-label  fw-bold">Puesto:</label>
                 </div>
-                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="puesto" formControlName="puesto" id="puesto" required >
+                <span>🔵    </span><input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary" placeholder=" 💼 Puesto" formControlName="puesto" id="puesto" required >
               </div>
 
               <div  class="m-2">
                 <div class="">
                   <label for="periodo"  class="form-label fw-bold">Periodo:</label>
                 </div>
-                <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="periodo" formControlName="periodo" id="periodo"  required>
+                <span>🔵    </span><input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo"  required>
               </div>
 
               <div  class="m-2">
                 <div>
-                  <label for="actividades" class="form-label  fw-bold">Actividades:</label>
+                  <label for="actividades" class="form-label  fw-bold">Tareas:</label>
                 </div>
-                <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="actividades" formControlName="actividades" id="actividades"  required >
+                <span>🔵    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary" placeholder=" ⛳ Tareas" formControlName="actividades" id="actividades"  required >
               </div>
         </div>
 
@@ -76,105 +76,121 @@
 
 
 
-    <div class="d-flex m-5">
-      <div class="p-2 mt-2 m-4 ">
-        <img src="assets/media/logoJob.png" alt="logotrabajo" class="logo-job">
-      </div>
+      <div class="d-flex col-12 justify-content-center mb-4">
 
 
-      <div class="border rounded p-2 w-75">
+          <div class="d-flex col-12 justify-content-center">
 
-        <!-- MÓDULO BOTONES EDIT -->
-
-        <div *ngIf="modoEdicion===false">
-          <div class=" d-flex justify-content-end">
-            <div class="p-1">
-              <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+            <div class="d-flex col-sm-3 col-md-2 m-2 justify-content-center">
+              <!-- IMAGEN -->
+              <div class="p-2 mt-1">
+                <img src="assets/media/logoJob.png" alt="logotrabajo" class="logo-job">
+              </div>
             </div>
 
-            <div class="p-1">
-              <button class="btn p-0 m-1" (click)="onDelete(i, $event)" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+            <div class="border rounded p-2 col-sm-9 col-md-8 ">
+
+              <!-- MÓDULO BOTONES EDIT -->
+
+              <div *ngIf="modoEdicion===false">
+                <div class=" d-flex justify-content-end">
+                  <div class="p-1">
+                    <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+                  </div>
+
+                  <div class="p-1">
+                    <button class="btn p-0 m-1" (click)="onDelete(i, $event)" ><span><img src="assets/media/logoDelete.png" alt="editar" class="logo-sm mt-1"></span></button>
+                  </div>
+                </div>
+              </div>
+
+            <div *ngIf="modoEdicion===true">
+              <div class="d-flex justify-content-end">
+                <div class="p-1">
+                  <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+                  <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id , $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+                </div>
+              </div>
             </div>
+            <!-- FIN MÓDULO BOTONES EDIT -->
+
+
+            <!-- FORMULARIO EDIT -->
+            <div *ngIf="modoEdicion===true">
+              <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
+
+                <div class="text-center p-2  ">
+
+                  <h3 class="text-center text-info m-3">Editar Experiencia</h3>
+
+                    <div  class="m-2">
+                      <div>
+                        <label for="empresa" class="form-label  fw-bold">Empresa:</label>
+                      </div>
+                      <span>🔵    </span><input type="text" [(ngModel)]="miPortafolio.empresa" class="col-md-10 col-sm-12  p-2 mb-2 border rounded  border-1 border-primary" placeholder="🌐 Empresa"  formControlName="empresa" id="empresa" required autofocus>
+                    </div>
+
+                    <div  class="m-2 ">
+                      <div>
+                        <label for="ubicacion" class="form-label  fw-bold">Ubicacion:</label>
+                      </div>
+                      <span>🔵    </span><input type="text" [(ngModel)]="miPortafolio.ubicacion" class="col-md-10 col-sm-12  p-2 mb-2 border rounded  border-1 border-primary" placeholder="📍Ubicacion" formControlName="ubicacion" id="ubicacion" required>
+                    </div>
+
+                    <div  class="m-2 ">
+                      <div>
+                        <label for="puesto" class="form-label  fw-bold">Puesto:</label>
+                      </div>
+                      <span>🔵    </span><input type="text" [(ngModel)]="miPortafolio.puesto" class="col-md-10 col-sm-12  p-2 mb-2 border rounded  border-1 border-primary" placeholder=" 💼 Puesto" formControlName="puesto" id="puesto" required >
+                    </div>
+
+                    <div  class="m-2">
+                      <div class="">
+                        <label for="periodo"  class="form-label fw-bold">Periodo:</label>
+                      </div>
+                      <span>🔵    </span><input type="text" [(ngModel)]="miPortafolio.periodo"  class="col-md-10 col-sm-12  p-2 mb-2 border rounded  border-1 border-primary" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo"  required>
+                    </div>
+
+                    <div  class="m-2">
+                      <div>
+                        <label for="actividades" class="form-label  fw-bold">Tareas:</label>
+                      </div>
+                      <span>🔵    </span><input type="text" [(ngModel)]="miPortafolio.actividades" class="col-md-10 col-sm-12  p-2 mb-2 border rounded  border-1 border-primary" placeholder="⛳ Tareas" formControlName="actividades" id="actividades"  required >
+                    </div>
+              </div>
+
+
+              </form>
+            </div>
+            <!-- FIN FORMULARIO EDIT -->
+
+
+            <div *ngIf="modoEdicion===false">
+              <div class="m-2">
+                <h4 class="fw-bold mb-3">🌐 {{miPortafolio.empresa}}</h4>
+                <div class="ms-4">
+                  <p class="fw-bold  mb-0">📍 UBICACION</p>
+                  <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.ubicacion}}</p>
+                  <p class="fw-bold  mb-0">💼 PUESTO</p>
+                  <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.puesto}}</p>
+                  <p class="fw-bold mb-0">📆 PERIODO</p>
+                  <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.periodo}}</p>
+                  <p class="fw-bold  mb-0">⛳ TAREAS</p>
+                  <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.actividades}}</p>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
           </div>
-        </div>
-
-      <div *ngIf="modoEdicion===true">
-        <div class="d-flex justify-content-end">
-          <div class="p-1">
-            <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
-
-            <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id , $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
-
-          </div>
-        </div>
-      </div>
-      <!-- FIN MÓDULO BOTONES EDIT -->
 
 
-      <!-- FORMULARIO EDIT -->
-      <div *ngIf="modoEdicion===true">
-        <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
-
-          <div class="text-center p-2 border shadow rounded ">
-
-            <h3 class="text-center text-info m-3">Editar Experiencia</h3>
-
-              <div  class="m-2">
-                <div>
-                  <label for="empresa" class="form-label  fw-bold">Empresa:</label>
-                </div>
-                <input type="text" [(ngModel)]="miPortafolio.empresa" class="col-8 p-2 mb-2 border rounded border-1" placeholder="empresa"  formControlName="empresa" id="empresa" required>
-              </div>
-
-              <div  class="m-2 ">
-                <div>
-                  <label for="ubicacion" class="form-label  fw-bold">Ubicacion:</label>
-                </div>
-                <input type="text" [(ngModel)]="miPortafolio.ubicacion" class="col-8 p-2 mb-2 border rounded border-1" placeholder="ubicacion" formControlName="ubicacion" id="ubicacion" required>
-              </div>
-
-              <div  class="m-2 ">
-                <div>
-                  <label for="puesto" class="form-label  fw-bold">Puesto:</label>
-                </div>
-                <input type="text" [(ngModel)]="miPortafolio.puesto" class="col-8 p-2 mb-2 border rounded border-1" placeholder="puesto" formControlName="puesto" id="puesto" required >
-              </div>
-
-              <div  class="m-2">
-                <div class="">
-                  <label for="periodo"  class="form-label fw-bold">Periodo:</label>
-                </div>
-                <input type="text" [(ngModel)]="miPortafolio.periodo"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="periodo" formControlName="periodo" id="periodo"  required>
-              </div>
-
-              <div  class="m-2">
-                <div>
-                  <label for="actividades" class="form-label  fw-bold">Actividades:</label>
-                </div>
-                <input type="text" [(ngModel)]="miPortafolio.actividades" class="col-8 p-2 mb-2 border rounded border-1" placeholder="actividades" formControlName="actividades" id="actividades"  required >
-              </div>
-        </div>
 
 
-        </form>
-      </div>
-      <!-- FIN FORMULARIO EDIT -->
-
-
-      <div *ngIf="modoEdicion===false">
-        <div class="m-3">
-          <h5 class="fw-bold mb-3">{{miPortafolio.empresa}}</h5>
-          <p class="fw-normal">UBICACION</p>
-          <p class="fw-bold">{{miPortafolio.ubicacion}}</p>
-          <p class="fw-normal">PUESTO</p>
-          <p class="fw-bold">{{miPortafolio.puesto}}</p>
-          <p class="fw-normal">PERIODO</p>
-          <p class="fw-bold">{{miPortafolio.periodo}}</p>
-          <p class="fw-normal">ACTIVIDADES PRINCIPALES</p>
-          <p class="fw-bold">{{miPortafolio.actividades}}</p>
-        </div>
-      </div>
-      </div>
       </div>
     </div>
 

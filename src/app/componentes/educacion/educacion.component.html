@@ -2,25 +2,26 @@
 
 
 
-  <div class=" justify-content-center p-5">
+  <div class=" justify-content-center p-2 w-100">
 
-    <!-- NUEVO REGISTRO -->
-    <div *ngIf="modoNuevoRegistro===false">
-      <div class="d-flex justify-content-center mb-4">
-        <button class="btn  border-0 p-2 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Educación</span></button>
+   <!-- NUEVO REGISTRO -->
+   <div *ngIf="modoNuevoRegistro===false">
+    <div class="d-flex justify-content-center mb-4 m-4">
+      <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Educación</span></button>
+    </div>
+  </div>
+
+  <div *ngIf="modoNuevoRegistro===true">
+    <div class="d-flex">
+      <div class="p-1">
+        <button class="btn p-0 m-1" (click)="onCancelNuevoRegistro()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1">Cancelar</span></button>
+
+        <button class="btn p-0 m-1" (click)="onSaveNewNuevoRegistro($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1">Guardar</span></button>
+
       </div>
     </div>
+  </div>
 
-    <div *ngIf="modoNuevoRegistro===true">
-      <div class="d-flex">
-        <div class="p-1">
-          <button class="btn p-0 m-1" (click)="onCancelNuevoRegistro()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1">Cancelar</span></button>
-
-          <button class="btn p-0 m-1" (click)="onSaveNewNuevoRegistro($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1">Guardar</span></button>
-
-        </div>
-      </div>
-    </div>
 
     <!------    FORMULARIO NEW    ------>
     <div *ngIf="modoNuevoRegistro===true" >
@@ -34,35 +35,35 @@
               <div>
                 <label for="institucion" class="form-label  fw-bold">Institucion:</label>
               </div>
-              <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Institucion"  formControlName="institucion" id="institucion" required>
+              <span>⚫    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" 🌐 Institucion"  formControlName="institucion" id="institucion" required autofocus>
             </div>
 
             <div  class="m-2 ">
               <div>
                 <label for="titulo" class="form-label  fw-bold">Titulo:</label>
               </div>
-              <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Titulo" formControlName="titulo" id="titulo" required>
+              <span>⚫    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" 🎓 Titulo" formControlName="titulo" id="titulo" required>
             </div>
 
             <div  class="m-2 ">
               <div>
                 <label for="periodo" class="form-label  fw-bold">Periodo:</label>
               </div>
-              <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="Periodo" formControlName="periodo" id="periodo" required >
+              <span>⚫    </span><input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo" required >
             </div>
 
             <div  class="m-2">
               <div class="">
                 <label for="estado"  class="form-label fw-bold">Estado:</label>
               </div>
-              <input type="text"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="Estado" formControlName="estado" id="estado"  required>
+              <span>⚫    </span><input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder="⏳ Estado" formControlName="estado" id="estado"  required>
             </div>
 
             <div  class="m-2">
               <div>
                 <label for="detalles" class="form-label  fw-bold">Detalles:</label>
               </div>
-              <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Detalles" formControlName="detalles" id="detalles"  required >
+              <span>⚫    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" ℹ Detalles" formControlName="detalles" id="detalles"  required >
             </div>
       </div>
 
@@ -78,13 +79,20 @@
     <div *ngFor="let miPortafolio of miPortafolio  ; let i = index" [attr.data-index]="i">
 
 
+      <div class="d-flex col-12 justify-content-center mb-4">
 
-        <div class="d-flex m-5">
-            <div class="p-2 mt-2 m-4">
+
+        <div class="d-flex col-12 justify-content-center">
+
+          <div class="d-flex col-sm-3 col-md-2 m-2 justify-content-center">
+            <!-- IMAGEN -->
+            <div class="p-2 mt-1">
               <img src="assets/media/logoEdu.png" alt="logotrabajo" class="logo-edu">
             </div>
+          </div>
 
-        <div class="border rounded p-2 w-75">
+
+        <div class="border rounded p-2 col-sm-9 col-md-8 ">
 
           <!-- MÓDULO BOTONES EDIT -->
 
@@ -117,7 +125,7 @@
       <div *ngIf="modoEdicion===true">
         <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
 
-          <div class="text-center p-2 border shadow rounded ">
+          <div class="text-center p-2">
 
             <h3 class="text-center text-info m-3">Editar Educación</h3>
 
@@ -125,35 +133,35 @@
                 <div>
                   <label for="institucion" class="form-label  fw-bold">Institucion:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.institucion" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Institucion"  formControlName="institucion" id="institucion" required>
+                <span>⚫    </span><input type="text" [(ngModel)]="miPortafolio.institucion" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" 🌐 Institucion"  formControlName="institucion" id="institucion" required autofocus>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="titulo" class="form-label  fw-bold">Titulo:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.titulo" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Titulo" formControlName="titulo" id="titulo" required>
+                <span>⚫    </span><input type="text" [(ngModel)]="miPortafolio.titulo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" 🎓 Titulo" formControlName="titulo" id="titulo" required>
               </div>
 
               <div  class="m-2 ">
                 <div>
                   <label for="periodo" class="form-label  fw-bold">Periodo:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.periodo" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Periodo" formControlName="periodo" id="periodo" required >
+                <span>⚫    </span><input type="text" [(ngModel)]="miPortafolio.periodo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo" required >
               </div>
 
               <div  class="m-2">
                 <div class="">
                   <label for="estado"  class="form-label fw-bold">Estado:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.estado"  class="col-8 p-2 mb-2 border rounded border-1" placeholder="Estado" formControlName="estado" id="estado"  required>
+                <span>⚫    </span><input type="text" [(ngModel)]="miPortafolio.estado"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder="⏳ Estado" formControlName="estado" id="estado"  required>
               </div>
 
               <div  class="m-2">
                 <div>
                   <label for="detalles" class="form-label  fw-bold">Detalles:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.detalles" class="col-8 p-2 mb-2 border rounded border-1" placeholder="Detalles" formControlName="detalles" id="detalles"  required >
+                <span>⚫    </span><input type="text" [(ngModel)]="miPortafolio.detalles" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info" placeholder=" ℹ Detalles" formControlName="detalles" id="detalles"  required >
               </div>
         </div>
 
@@ -162,19 +170,23 @@
       </div>
       <!------  FIN  FORMULARIO EDIT    ------>
       <div *ngIf="modoEdicion===false">
-          <div class="m-3">
-            <p class="fw-bold">{{miPortafolio.institucion}}</p>
-            <p class="fw-normal">TITULO</p>
-            <p class="fw-bold">{{miPortafolio.titulo}}</p>
-            <p class="fw-normal">PERIODO</p>
-            <p class="fw-bold">{{miPortafolio.periodo}}</p>
-            <p class="fw-normal">ESTADO</p>
-            <p class="fw-bold">{{miPortafolio.estado}}</p>
-            <p class="fw-normal">DETALLES</p>
-            <p class="fw-bold">{{miPortafolio.detalles}}</p>
+        <div class="m-2">
+          <h4 class="fw-bold mb-3">🌐 {{miPortafolio.institucion}}</h4>
+          <div class="ms-4">
+            <p class="fw-bold  mb-0"> 🎓 TITULO</p>
+            <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.titulo}}</p>
+            <p class="fw-bold  mb-0"> 📆 PERIODO</p>
+            <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.periodo}}</p>
+            <p class="fw-bold mb-0">⏳ ESTADO</p>
+            <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.estado}}</p>
+            <p class="fw-bold  mb-0"> ℹ DETALLES</p>
+            <p class="fw-normal ms-4"><span class="ms-1"></span>{{miPortafolio.detalles}}</p>
           </div>
         </div>
       </div>
+
+      </div>
+    </div>
 
 
 

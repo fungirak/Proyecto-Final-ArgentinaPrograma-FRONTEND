@@ -1,8 +1,8 @@
-<div class="justify-content-center p-5">
+<div class="justify-content-center p-2 w-100">
 
     <!-- NUEVO REGISTRO -->
     <div *ngIf="modoNuevoRegistro===false">
-      <div class="d-flex justify-content-center mb-4">
+      <div class="d-flex justify-content-center mb-4 m-4">
         <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Skill</span></button>
       </div>
     </div>
@@ -18,6 +18,7 @@
       </div>
     </div>
 
+
     <!-- FORMULARIO NEW -->
     <div *ngIf="modoNuevoRegistro===true">
       <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
@@ -30,14 +31,14 @@
               <div>
                 <label for="imagen" class="form-label  fw-bold">Imagen:</label>
               </div>
-              <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="imagen"  formControlName="imagen" id="imagen" required>
+              <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required autofocus>
             </div>
 
             <div  class="m-2 ">
               <div>
                 <label for="tecnologia" class="form-label  fw-bold">Tecnología:</label>
               </div>
-              <input type="text" class="col-8 p-2 mb-2 border rounded border-1" placeholder="tecnologia" formControlName="tecnologia" id="tecnologia" required>
+              <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required>
             </div>
 
 
@@ -86,7 +87,7 @@
           <div *ngIf="modoEdicion===true">
             <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
 
-              <div class="text-center p-2 border shadow rounded ">
+              <div class="text-center p-2 ">
 
                 <h3 class="text-center text-info m-3">Editar Skill</h3>
 
@@ -94,14 +95,14 @@
                     <div>
                       <label for="imagen" class="form-label  fw-bold">Imagen:</label>
                     </div>
-                    <input type="text" [(ngModel)]="miPortafolio.imagen" class="col-8 p-2 mb-2 border rounded border-1" placeholder="imagen"  formControlName="imagen" id="imagen" required>
+                    <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required autofocus>
                   </div>
 
                   <div  class="m-2 ">
                     <div>
-                      <label for="tecnologia" class="form-label  fw-bold">Tecnología:</label>
+                      <label for="tecnologia" class="form-label  fw-bold">Tecnología</label>
                     </div>
-                    <input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-8 p-2 mb-2 border rounded border-1" placeholder="tecnologia" formControlName="tecnologia" id="tecnologia" required>
+                    <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required>
                   </div>
 
 
@@ -114,7 +115,8 @@
 
 
             <div *ngIf="modoEdicion===false">
-              <h4 class="">{{miPortafolio.tecnologia}}</h4>
+              <p class="fw-bold  mb-0">TECNOLOGÍA: </p>
+              <h4 class=""> 💎 {{miPortafolio.tecnologia}}</h4>
               <img src={{miPortafolio.imagen}} alt="logoskills" class="logoSkills">
             </div>
           </div>
