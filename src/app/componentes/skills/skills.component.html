@@ -27,18 +27,18 @@
 
           <h3 class="text-center text-info m-3">Nuevo Skill</h3>
 
+          <div  class="m-2 ">
+            <div>
+              <label for="tecnologia" class="form-label  fw-bold">Tecnología:</label>
+            </div>
+            <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
+          </div>
+
             <div  class="m-2">
               <div>
                 <label for="imagen" class="form-label  fw-bold">Imagen:</label>
               </div>
-              <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required autofocus>
-            </div>
-
-            <div  class="m-2 ">
-              <div>
-                <label for="tecnologia" class="form-label  fw-bold">Tecnología:</label>
-              </div>
-              <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required>
+              <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required>
             </div>
 
 
@@ -91,18 +91,18 @@
 
                 <h3 class="text-center text-info m-3">Editar Skill</h3>
 
+                <div  class="m-2 ">
+                  <div>
+                    <label for="tecnologia" class="form-label  fw-bold">Tecnología</label>
+                  </div>
+                  <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
+                </div>
+
                   <div  class="m-2">
                     <div>
                       <label for="imagen" class="form-label  fw-bold">Imagen:</label>
                     </div>
-                    <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required autofocus>
-                  </div>
-
-                  <div  class="m-2 ">
-                    <div>
-                      <label for="tecnologia" class="form-label  fw-bold">Tecnología</label>
-                    </div>
-                    <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required>
+                    <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required >
                   </div>
 
 
@@ -115,7 +115,7 @@
 
 
             <div *ngIf="modoEdicion===false">
-              <p class="fw-bold  mb-0">TECNOLOGÍA: </p>
+              <p class="fw-bold  mb-0">TECNOLOGÍA</p>
               <h4 class=""> 💎 {{miPortafolio.tecnologia}}</h4>
               <img src={{miPortafolio.imagen}} alt="logoskills" class="logoSkills">
             </div>

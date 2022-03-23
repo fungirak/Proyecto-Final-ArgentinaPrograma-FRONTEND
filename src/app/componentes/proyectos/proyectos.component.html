@@ -27,11 +27,18 @@
 
           <h3 class="text-center text-info m-3">Nuevo Proyecto</h3>
 
+          <div  class="m-2 ">
+            <div>
+              <label for="titulo" class="form-label  fw-bold">Titulo:</label>
+            </div>
+            <span> 🔴    </span><input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
+          </div>
+
             <div  class="m-2">
               <div>
                 <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
               </div>
-              <span> 🔴    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required autofocus>
+              <span> 🔴    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
             </div>
 
             <div  class="m-2 ">
@@ -39,13 +46,6 @@
                 <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
               </div>
               <span> 🔴    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" 🖼 Link Imagen" formControlName="imagen" id="imagen" required>
-            </div>
-
-            <div  class="m-2 ">
-              <div>
-                <label for="titulo" class="form-label  fw-bold">Titulo:</label>
-              </div>
-              <span> 🔴    </span><input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required >
             </div>
 
 
@@ -96,11 +96,18 @@
 
                   <h3 class="text-center text-info m-3">Editar Proyecto</h3>
 
+                  <div  class="m-2 ">
+                    <div>
+                      <label for="titulo" class="form-label  fw-bold">Título:</label>
+                    </div>
+                    <span> 🔴    </span><input type="text" [(ngModel)]="miPortafolio.titulo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
+                  </div>
+
                     <div  class="m-2">
                       <div>
                         <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
                       </div>
-                      <span> 🔴    </span><input type="text" [(ngModel)]="miPortafolio.descripcion" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required autofocus>
+                      <span> 🔴    </span><input type="text" [(ngModel)]="miPortafolio.descripcion" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
                     </div>
 
                     <div  class="m-2 ">
@@ -108,13 +115,6 @@
                         <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
                       </div>
                       <span> 🔴    </span><input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder="  🖼 Link Imagen" formControlName="imagen" id="imagen" required>
-                    </div>
-
-                    <div  class="m-2 ">
-                      <div>
-                        <label for="titulo" class="form-label  fw-bold">Título:</label>
-                      </div>
-                      <span> 🔴    </span><input type="text" [(ngModel)]="miPortafolio.titulo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required>
                     </div>
 
 
