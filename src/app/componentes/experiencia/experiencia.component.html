@@ -52,28 +52,28 @@
                 <div  class="text-start alineado">
                   <label for="ubicacion" class="form-label  fw-bold">Ubicacion:</label>
                 </div>
-                <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow" placeholder="📍Ubicacion" formControlName="ubicacion" id="ubicacion" required>
+                <input type="text" [(ngModel)]="miPortafolio.ubicacion" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow" placeholder="📍Ubicacion" formControlName="ubicacion" id="ubicacion" required>
               </div>
 
               <div  class=" ">
                 <div  class="text-start alineado">
                   <label for="puesto" class="form-label  fw-bold">Puesto:</label>
                 </div>
-                <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow" placeholder=" 💼 Puesto" formControlName="puesto" id="puesto" required >
+                <input type="text" [(ngModel)]="miPortafolio.puesto" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow" placeholder=" 💼 Puesto" formControlName="puesto" id="puesto" required >
               </div>
 
               <div  class="">
                 <div  class="text-start alineado">
                   <label for="periodo"  class="form-label fw-bold">Periodo:</label>
                 </div>
-                <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo"  required>
+                <input type="text" [(ngModel)]="miPortafolio.periodo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo"  required>
               </div>
 
               <div  class="">
                 <div  class="text-start alineado">
                   <label for="actividades" class="form-label  fw-bold">Tareas:</label>
                 </div>
-                <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow mb-4" placeholder=" ⛳ Tareas" formControlName="actividades" id="actividades"  required >
+                <input type="text" [(ngModel)]="miPortafolio.actividades" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-primary shadow mb-4" placeholder=" ⛳ Tareas" formControlName="actividades" id="actividades"  required >
               </div>
         </div>
 

@@ -31,14 +31,14 @@
             <div  class="text-start alineado">
               <label for="tecnologia" class="form-label  fw-bold">Tecnología:</label>
             </div>
-            <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
+            <input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
           </div>
 
             <div  class="">
               <div  class="text-start alineado">
                 <label for="imagen" class="form-label  fw-bold">Imagen:</label>
               </div>
-              <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow mb-4" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required>
+              <input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow mb-4" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required>
             </div>
 
       </div>

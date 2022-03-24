@@ -18,6 +18,7 @@ export class ExperienciaComponent implements OnInit {
 
 
 
+
   constructor(public datosPortafolio: PortafolioService, private formBuilder: FormBuilder) {
     this.form=this.formBuilder.group({
       empresa: [ '', [Validators.required, Validators.minLength(2)]],
@@ -39,6 +40,7 @@ export class ExperienciaComponent implements OnInit {
 
   onEdit(id: any, event: Event ){
     this.modoEdicion=true;
+
     console.log("this.form.value: " , this.form.value);
     console.log("id: " , id);
   }
