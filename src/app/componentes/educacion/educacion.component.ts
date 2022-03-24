@@ -15,6 +15,7 @@ export class EducacionComponent implements OnInit {
   form: FormGroup;
 
 
+
   constructor(public datosPortafolio: PortafolioService, private formBuilder: FormBuilder) {
     this.form=this.formBuilder.group({
      detalles: [ '', [Validators.required, Validators.minLength(2)]],
@@ -28,6 +29,7 @@ export class EducacionComponent implements OnInit {
       this.modoEdicion = false ;
     }
    }
+
 
 
   ngOnInit(): void {
@@ -54,6 +56,8 @@ export class EducacionComponent implements OnInit {
     console.log("id: " , id);
   }
 
+
+
   onSaveEdit( id: any, event: Event ){
     event.preventDefault;
     this.datosPortafolio.putEducacion(this.form.value, id).subscribe(data => {
@@ -63,6 +67,8 @@ export class EducacionComponent implements OnInit {
     });
     this.modoEdicion = false;
   }
+
+
 
   onSaveNewNuevoRegistro(event: Event ){
     event.preventDefault;
@@ -76,6 +82,8 @@ export class EducacionComponent implements OnInit {
       this.miPortafolio=data;
     });
   }
+
+
 
   onDelete(  i: any, event: Event ){
     this.modoEdicion = false;
@@ -108,9 +116,13 @@ export class EducacionComponent implements OnInit {
     })
   }
 
+
+
   onCancelNuevoRegistro(){
     this.modoNuevoRegistro=false;
   }
+
+
 
   onCancel(i: any, event: Event){
     this.modoEdicion= false;

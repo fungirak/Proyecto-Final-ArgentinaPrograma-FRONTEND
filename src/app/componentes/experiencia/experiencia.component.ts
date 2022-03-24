@@ -59,6 +59,7 @@ export class ExperienciaComponent implements OnInit {
     this.modoEdicion=false;
   }
 
+
   onSaveNewNuevoRegistro(event: Event ){
     event.preventDefault;
     this.datosPortafolio.postExperiencia(this.form.value).subscribe(data => {
@@ -76,6 +77,7 @@ export class ExperienciaComponent implements OnInit {
   onCancelNuevoRegistro(){
     this.modoNuevoRegistro=false;
   }
+
 
   onCancel(i: any, event: Event){
     this.modoEdicion=false;

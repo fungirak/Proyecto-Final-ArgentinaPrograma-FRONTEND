@@ -8,7 +8,6 @@
     </div>
 
 
-
     <!-- FORMULARIO NEW -->
     <div *ngIf="modoNuevoRegistro===true" class="d-flex justify-content-center">
       <form  class="col-md-8 col-sm-12 mb-4" [formGroup]="form" >
@@ -42,9 +41,7 @@
               <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow mb-4" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required>
             </div>
 
-
       </div>
-
 
       </form>
     </div>
@@ -53,11 +50,9 @@
   <div class="row">
     <div *ngFor="let miPortafolio of miPortafolio ; let i = index" [attr.data-index]="i" class="col-md-3 col-sm-12">
 
-
           <div class="text-center m-3 border rounded p-2 bg-white shadow-lg">
 
                   <!-- MÓDULO BOTONES EDIT -->
-
 
             <div *ngIf="modoEdicion===false">
               <div class=" d-flex justify-content-end">
@@ -70,8 +65,6 @@
                 </div>
               </div>
             </div>
-
-
 
           <!-- FIN MÓDULO BOTONES EDIT -->
 

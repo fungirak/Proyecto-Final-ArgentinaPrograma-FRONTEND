@@ -48,6 +48,7 @@ export class SkillsComponent implements OnInit {
     console.log("id: " , id);
   }
 
+
   onSaveEdit( id: any, event: Event ){
     event.preventDefault;
     this.datosPortafolio.putSkill(this.form.value, id).subscribe(data => {
@@ -57,6 +58,8 @@ export class SkillsComponent implements OnInit {
     });
     this.modoEdicion=false;
   }
+
+
 
   onSaveNewNuevoRegistro(event: Event ){
     event.preventDefault;
@@ -81,6 +84,7 @@ export class SkillsComponent implements OnInit {
   onCancel(i: any, event: Event){
     this.modoEdicion=false;
   }
+
 
   onDelete( i: any, event: Event ){
     this.modoEdicion=false;
