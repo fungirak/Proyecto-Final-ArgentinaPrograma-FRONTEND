@@ -3,42 +3,43 @@
     <!-- NUEVO REGISTRO -->
     <div *ngIf="modoNuevoRegistro===false">
       <div class="d-flex justify-content-center mb-4 m-4">
-        <button class="btn border-0 p-0 m-1" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1">Añadir Skill</span></button>
+        <button class="btn btn-sm btn-green border shadow m-1 text-center text-light fw-bold" (click)="onCrear($event)" ><span><img src="assets/media/logoAdd.png" alt="editar" class="logo-sm mt-1 bg-white rounded-circle">AGREGAR SKILL</span></button>
       </div>
     </div>
 
-    <div *ngIf="modoNuevoRegistro===true">
-      <div class="d-flex">
-        <div class="p-1">
-          <button class="btn p-0 m-1" (click)="onCancelNuevoRegistro()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1">Cancelar</span></button>
-
-          <button class="btn p-0 m-1" (click)="onSaveNewNuevoRegistro($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1">Guardar</span></button>
-
-        </div>
-      </div>
-    </div>
 
 
     <!-- FORMULARIO NEW -->
-    <div *ngIf="modoNuevoRegistro===true">
-      <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
+    <div *ngIf="modoNuevoRegistro===true" class="d-flex justify-content-center">
+      <form  class="col-md-8 col-sm-12 mb-4" [formGroup]="form" >
 
-        <div class="text-center p-2 border shadow rounded ">
+        <div class="text-center p-2 border shadow rounded bg-white mt-4">
+
+          <div *ngIf="modoNuevoRegistro===true">
+            <div class="d-flex justify-content-end">
+              <div class="p-1">
+                <button class="btn p-0 m-1" (click)="onCancelNuevoRegistro()" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+                <button class="btn p-0 m-1" (click)="onSaveNewNuevoRegistro($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+              </div>
+            </div>
+          </div>
 
           <h3 class="text-center text-info m-3">Nuevo Skill</h3>
 
-          <div  class="m-2 ">
-            <div>
+          <div  class=" ">
+            <div  class="text-start alineado">
               <label for="tecnologia" class="form-label  fw-bold">Tecnología:</label>
             </div>
-            <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
+            <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
           </div>
 
-            <div  class="m-2">
-              <div>
+            <div  class="">
+              <div  class="text-start alineado">
                 <label for="imagen" class="form-label  fw-bold">Imagen:</label>
               </div>
-              <span> 🟡    </span><input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required>
+              <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow mb-4" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required>
             </div>
 
 
@@ -53,7 +54,7 @@
     <div *ngFor="let miPortafolio of miPortafolio ; let i = index" [attr.data-index]="i" class="col-md-3 col-sm-12">
 
 
-          <div class="text-center m-3 border rounded p-2">
+          <div class="text-center m-3 border rounded p-2 bg-white shadow-lg">
 
                   <!-- MÓDULO BOTONES EDIT -->
 
@@ -70,16 +71,7 @@
               </div>
             </div>
 
-          <div *ngIf="modoEdicion===true">
-            <div class="d-flex justify-content-end">
-              <div class="p-1">
-                <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-                <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
-
-              </div>
-            </div>
-          </div>
 
           <!-- FIN MÓDULO BOTONES EDIT -->
 
@@ -89,20 +81,30 @@
 
               <div class="text-center p-2 ">
 
-                <h3 class="text-center text-info m-3">Editar Skill</h3>
+                <div *ngIf="modoEdicion===true">
+                  <div class="d-flex justify-content-end">
+                    <div class="p-1">
+                      <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-                <div  class="m-2 ">
-                  <div>
-                    <label for="tecnologia" class="form-label  fw-bold">Tecnología</label>
+                      <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+
+                    </div>
                   </div>
-                  <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
                 </div>
 
-                  <div  class="m-2">
-                    <div>
+
+                <div  class=" ">
+                  <div  class="text-start alineado-sm">
+                    <label for="tecnologia" class="form-label  fw-bold">Tecnología</label>
+                  </div>
+                  <input type="text" [(ngModel)]="miPortafolio.tecnologia" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow" placeholder=" 💎 Tecnología" formControlName="tecnologia" id="tecnologia" required autofocus>
+                </div>
+
+                  <div  class="">
+                    <div  class="text-start alineado-sm">
                       <label for="imagen" class="form-label  fw-bold">Imagen:</label>
                     </div>
-                    <span> 🟡    </span><input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required >
+                    <input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-warning shadow" placeholder=" 🖼 Link Imagen"  formControlName="imagen" id="imagen" required >
                   </div>
 
 
@@ -115,9 +117,8 @@
 
 
             <div *ngIf="modoEdicion===false">
-              <p class="fw-bold  mb-0">TECNOLOGÍA</p>
-              <h4 class=""> 💎 {{miPortafolio.tecnologia}}</h4>
-              <img src={{miPortafolio.imagen}} alt="logoskills" class="logoSkills">
+              <h4 class="m-2 mb-2">{{miPortafolio.tecnologia}}</h4>
+              <img src={{miPortafolio.imagen}} alt="logoskills" class="logoSkills mb-4 mt-2">
             </div>
           </div>
 

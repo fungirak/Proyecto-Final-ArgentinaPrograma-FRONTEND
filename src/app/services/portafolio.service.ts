@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IAcercaDe } from '../interfaces/iacercade';
+// import { IAcercaDe } from '../interfaces/iacercade';
+// import { IEducacion } from '../interfaces/ieducacion';
+// import { IExperiencia } from '../interfaces/iexperiencia';
+// import { IProyecto } from '../interfaces/iproyecto';
+// import { ISkill } from '../interfaces/iskill';
 
 @Injectable({
   providedIn: 'root'
@@ -46,9 +50,9 @@ export class PortafolioService {
   // **************   |   METHOD'S POST    | ******************************
   // *********************************************************************
 
-  postAcercaDe( AcercaDe: IAcercaDe ):Observable<IAcercaDe> {
+  postAcercaDe( AcercaDe: any ):Observable<any> {
     let AcercaDeJSON = JSON.stringify(AcercaDe);
-    return this.http.post<IAcercaDe>( this.url + 'acerca_de', AcercaDeJSON , { headers: this.headers} );
+    return this.http.post<any>( this.url + 'acerca_de', AcercaDeJSON , { headers: this.headers} );
   }
 
   postEducacion( Educacion: any ):Observable<any> {

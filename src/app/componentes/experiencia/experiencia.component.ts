@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
+import { IExperiencia } from '../../interfaces/iexperiencia';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
-  miPortafolio:any;
+  miPortafolio: any;
   modoEdicion: boolean = false;
   modoNuevoRegistro: boolean = false;
   form: FormGroup;
@@ -85,13 +86,13 @@ export class ExperienciaComponent implements OnInit {
     this.modoEdicion=false;
     event.preventDefault;
     Swal.fire({
-      title: '¿Desea Eliminar el item de Experiencia?',
+      title: '¿ELIMINAR ITEM EXPERIENCIA?',
       text: "No podrá revertir los cambios.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'ELIMINAR'
+      confirmButtonText: 'Si, Eliminar.'
     }).then((result) => {
       if (result.isConfirmed) {
         this.datosPortafolio.deleteExperiencia(this.miPortafolio[i].id).subscribe(data => {
@@ -103,11 +104,12 @@ export class ExperienciaComponent implements OnInit {
 
           });
 
-        Swal.fire(
-          'ELIMINADO',
-          'Item Experiencia eliminado con éxito.',
-          'success'
-        )
+        Swal.fire({
+          title: 'ITEM ELIMINADO',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1000
+        })
       }
     })
   }

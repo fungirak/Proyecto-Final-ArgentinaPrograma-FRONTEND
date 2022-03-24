@@ -12,3 +12,17 @@
 .mt-8{
   margin-top: 8em;
 }
+
+.ajuste-logo{
+  height: 6em;
+  width: 6em;
+  border-radius: 50%;
+}
+
+.btn-green{
+  background-color: rgb(41, 247, 41);
+}
+
+.alineado{
+  margin-left: 4em;
+}

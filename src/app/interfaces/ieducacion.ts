@@ -1,4 +1,4 @@
-export interface Educacion {
+export interface IEducacion {
   titulo: String;
   periodo: String;
   institucion: String;

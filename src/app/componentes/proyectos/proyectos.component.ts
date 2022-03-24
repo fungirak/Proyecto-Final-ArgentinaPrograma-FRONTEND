@@ -84,13 +84,13 @@ export class ProyectosComponent implements OnInit {
     this.modoEdicion=false;
     event.preventDefault;
     Swal.fire({
-      title: '¿Desea Eliminar el item de Proyectos?',
+      title: '¿ELIMINAR ITEM PROYECTO?',
       text: "No podrá revertir los cambios.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'ELIMINAR'
+      confirmButtonText: 'Si, Eliminar.'
     }).then((result) => {
       if (result.isConfirmed) {
         this.datosPortafolio.deleteProyecto(this.miPortafolio[i].id).subscribe(data => {
@@ -102,11 +102,12 @@ export class ProyectosComponent implements OnInit {
 
           });
 
-        Swal.fire(
-          'ELIMINADO',
-          'Item de Proyectos eliminado con éxito.',
-          'success'
-        )
+        Swal.fire({
+          title: 'ITEM ELIMINADO',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1000
+        })
       }
     })
 

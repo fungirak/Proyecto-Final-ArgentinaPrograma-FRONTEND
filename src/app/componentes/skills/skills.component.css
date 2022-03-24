@@ -15,3 +15,15 @@
 .mt-8{
   margin-top: 8em;
 }
+
+.btn-green{
+  background-color: rgb(41, 247, 41);
+}
+
+.alineado{
+  margin-left: 4em;
+}
+
+.alineado-sm{
+  margin-left: 2em;
+}

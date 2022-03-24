@@ -81,13 +81,13 @@ export class EducacionComponent implements OnInit {
     this.modoEdicion = false;
     event.preventDefault;
     Swal.fire({
-      title: '¿Desea Eliminar el item de Educación?',
+      title: '¿ELIMINAR ITEM EDUCACIÓN?',
       text: "No podrá revertir los cambios.",
       icon: 'warning',
-      showCancelButton: true,
       confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Si, Eliminar.'
+      confirmButtonText: 'Si, Eliminar.',
+      showCancelButton: true,
+      cancelButtonColor: '#3085d6'
     }).then((result) => {
       if (result.isConfirmed) {
         this.datosPortafolio.deleteEducacion(this.miPortafolio[i].id).subscribe(data => {
@@ -98,11 +98,12 @@ export class EducacionComponent implements OnInit {
           });
 
           });
-        Swal.fire(
-          'ELIMINADO',
-          'Item Educación eliminado con éxito.',
-          'success'
-        )
+        Swal.fire({
+          title: 'ITEM ELIMINADO',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1000
+        })
       }
     })
   }
