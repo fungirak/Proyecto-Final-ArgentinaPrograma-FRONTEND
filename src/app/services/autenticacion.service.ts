@@ -8,7 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class AutenticacionService {
 
-  url="https://proyecto-final-arg-prog.herokuapp.com/auth/login";
+  urlLogin="https://proyecto-final-arg-prog.herokuapp.com/auth/login";
+  urlNuevo="https://proyecto-final-arg-prog.herokuapp.com/auth/nuevo";
   usuario: BehaviorSubject<any>;
 
 
@@ -18,7 +19,7 @@ export class AutenticacionService {
   }
 
   login(credenciales:any):Observable<any>{
-    return this.http.post(this.url , credenciales);
+    return this.http.post(this.urlLogin , credenciales);
    /* return this.http.post(this.url, credenciales).pipe(map(data => {
       console.log("Archivo Autenticacion Service , credenciales: ", credenciales);
       console.log("Archivo Autenticacion Service , mapeo de data: ", data);
@@ -26,6 +27,10 @@ export class AutenticacionService {
       return data;
     }))
     */
+  }
+
+  register(credenciales:any):Observable<any>{
+    return this.http.post(this.urlNuevo , credenciales);
   }
 
   token(){

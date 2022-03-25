@@ -1,11 +1,9 @@
 <app-banner-superior></app-banner-superior>
 <div class="container-fluid imagen-fondo">
-  <div class="row vh-100 justify-content-center">
+  <div class="row justify-content-center">
 
-
-
-  <form class="m-5 col-md-4 col-sm-10" [formGroup]="form" (ngSubmit)="onLogin($event)">
-    <h2 class="text-center text-white">INICIAR SESION</h2>
+  <form class="m-5 col-md-4 col-sm-10 bg-white p-3 rounded shadow" [formGroup]="form" (ngSubmit)="onLogin($event)">
+    <h3 class="text-center text-info">MI PORTAFOLIO</h3>
     <div class="mb-3 mt-3">
       <label for="exampleInputnombreUsuario1" class="form-label">Nombre de usuario</label>
       <input type="text" formControlName="nombreUsuario"
@@ -23,7 +21,7 @@
 
       </div>
 
-      <div class="mb-3">
+      <div class="mb-5">
         <label for="exampleInputPassword1" class="form-label">Contraseña</label>
         <input type="password" formControlName="password"
         [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
@@ -41,7 +39,7 @@
       </div>
       <button type="submit" class="btn btn-skyblue btn-sm w-100 fw-bold text-light border border-light">INICIAR SESION</button>
     </form>
-    <h1 class="text-center mt-5 text-white fw-bold">ARGENTINA <br> PROGRAMA</h1>
+    <h1 class="text-center mt-2 text-white fw-bold"><br></h1>
   </div>
 </div>
 <app-footer></app-footer>

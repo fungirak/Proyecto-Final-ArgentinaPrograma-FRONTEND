@@ -20,6 +20,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { PageNotFoundComponent } from './componentes/page-not-found/page-not-found.component';
+import { RegisterComponent } from './componentes/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PageNotFoundComponent } from './componentes/page-not-found/page-not-fou
     LoginComponent,
     PortafolioComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

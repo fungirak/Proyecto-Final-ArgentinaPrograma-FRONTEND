@@ -1,0 +1,87 @@
+<app-banner-superior></app-banner-superior>
+<div class="container-fluid imagen-fondo">
+  <div class="row justify-content-center">
+
+
+
+  <form class="m-3 col-md-4 col-sm-10 bg-white p-2 rounded shadow" [formGroup]="form" (ngSubmit)="onRegister($event)">
+    <h3 class="text-center text-info">¡CREAR TU PORTAFOLIO!</h3>
+
+    <div class="mb-1 mt-3">
+      <label for="exampleInputnombre1" class="form-label fw-bold">Nombre y Apellido:</label>
+      <input type="text" formControlName="nombre"
+        [ngClass]="{'is-invalid': nombre?.errors && nombre?.touched, 'is-valid': !nombre?.errors && nombre?.touched}"
+        class="form-control" id="exampleInputnombre1" aria-describedby="nombreHelp">
+
+      <div *ngIf="nombre?.errors && nombre?.touched">
+        <p *ngIf="nombre?.hasError('required')" class="text-danger">
+          El nombre es requerido.
+        </p>
+        <p *ngIf="nombre?.hasError('nombre')" class="text-danger">
+          El formato del nombre debe ser válido.
+        </p>
+      </div>
+
+      </div>
+
+
+    <div class="mb-1 mt-1">
+      <label for="exampleInputnombreUsuario1" class="form-label fw-bold">username:</label>
+      <input type="text" formControlName="nombreUsuario"
+        [ngClass]="{'is-invalid': nombreUsuario?.errors && nombreUsuario?.touched, 'is-valid': !nombreUsuario?.errors && nombreUsuario?.touched}"
+        class="form-control" id="exampleInputnombreUsuario1" aria-describedby="nombreUsuarioHelp">
+
+      <div *ngIf="nombreUsuario?.errors && nombreUsuario?.touched">
+        <p *ngIf="nombreUsuario?.hasError('required')" class="text-danger">
+          El nombreUsuario es requerido.
+        </p>
+        <p *ngIf="nombreUsuario?.hasError('nombreUsuario')" class="text-danger">
+          El formato del nombreUsuario debe ser válido.
+        </p>
+      </div>
+
+      </div>
+
+      <div class="mb-1 mt-1">
+        <label for="exampleInputemail1" class="form-label fw-bold">correo electrónico:</label>
+        <input type="text" formControlName="email"
+          [ngClass]="{'is-invalid': email?.errors && email?.touched, 'is-valid': !email?.errors && email?.touched}"
+          class="form-control" id="exampleInputemail1" aria-describedby="emailHelp">
+
+        <div *ngIf="email?.errors && email?.touched">
+          <p *ngIf="email?.hasError('required')" class="text-danger">
+            El email es requerido.
+          </p>
+          <p *ngIf="email?.hasError('email')" class="text-danger">
+            El formato del email debe ser válido.
+          </p>
+        </div>
+
+        </div>
+
+      <div class="mb-1">
+        <label for="exampleInputpassword1" class="form-label fw-bold">contraseña:</label>
+        <input type="password" formControlName="password"
+        [ngClass]="{'is-invalid': password?.errors && password?.touched, 'is-valid': !password?.errors && password?.touched}"
+        class="form-control" id="exampleInputpassword1">
+
+        <div *ngIf="password?.errors && password?.touched">
+          <p *ngIf="password?.hasError('required')" class="text-danger">
+            La contraseña es requerida.
+          </p>
+          <p *ngIf="password?.errors?.['minlength']" class="text-danger">
+            La contraseña debe ser de 8 o más caracteres.
+          </p>
+        </div>
+
+      </div>
+
+
+
+
+      <button type="submit" class="btn btn-skyblue btn-sm w-100 fw-bold text-light border border-light mt-3">CREAR CUENTA</button>
+    </form>
+
+  </div>
+</div>
+<app-footer></app-footer>
