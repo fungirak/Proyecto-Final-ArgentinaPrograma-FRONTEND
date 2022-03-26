@@ -42,5 +42,10 @@ export class AutenticacionService {
     sessionStorage.setItem('token', token);
   }
 
+  removeToken(): void {
+    sessionStorage.removeItem('token');
+    console.log("Token removido, desde archivo autentication service", sessionStorage.getItem('token'));
+  }
+
 
 }

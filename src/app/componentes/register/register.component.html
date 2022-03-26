@@ -1,14 +1,14 @@
 <app-banner-superior></app-banner-superior>
-<div class="container-fluid imagen-fondo">
-  <div class="row justify-content-center">
+<div class="container-fluid imagen-fondo d-flex justify-content-center">
+  <div class="row justify-content-center col-10 mt-3">
 
 
 
   <form class="m-3 col-md-4 col-sm-10 bg-white p-2 rounded shadow" [formGroup]="form" (ngSubmit)="onRegister($event)">
-    <h3 class="text-center text-info">¡CREAR TU PORTAFOLIO!</h3>
+    <h3 class="text-center text-info mt-2">¡CREAR TU PORTAFOLIO!</h3>
 
     <div class="mb-1 mt-3">
-      <label for="exampleInputnombre1" class="form-label fw-bold">Nombre y Apellido:</label>
+      <label for="exampleInputnombre1" class="form-label">Nombre y Apellido:</label>
       <input type="text" formControlName="nombre"
         [ngClass]="{'is-invalid': nombre?.errors && nombre?.touched, 'is-valid': !nombre?.errors && nombre?.touched}"
         class="form-control" id="exampleInputnombre1" aria-describedby="nombreHelp">
@@ -26,7 +26,7 @@
 
 
     <div class="mb-1 mt-1">
-      <label for="exampleInputnombreUsuario1" class="form-label fw-bold">username:</label>
+      <label for="exampleInputnombreUsuario1" class="form-label">username:</label>
       <input type="text" formControlName="nombreUsuario"
         [ngClass]="{'is-invalid': nombreUsuario?.errors && nombreUsuario?.touched, 'is-valid': !nombreUsuario?.errors && nombreUsuario?.touched}"
         class="form-control" id="exampleInputnombreUsuario1" aria-describedby="nombreUsuarioHelp">
@@ -43,7 +43,7 @@
       </div>
 
       <div class="mb-1 mt-1">
-        <label for="exampleInputemail1" class="form-label fw-bold">correo electrónico:</label>
+        <label for="exampleInputemail1" class="form-label">correo electrónico:</label>
         <input type="text" formControlName="email"
           [ngClass]="{'is-invalid': email?.errors && email?.touched, 'is-valid': !email?.errors && email?.touched}"
           class="form-control" id="exampleInputemail1" aria-describedby="emailHelp">
@@ -60,7 +60,7 @@
         </div>
 
       <div class="mb-1">
-        <label for="exampleInputpassword1" class="form-label fw-bold">contraseña:</label>
+        <label for="exampleInputpassword1" class="form-label">contraseña:</label>
         <input type="password" formControlName="password"
         [ngClass]="{'is-invalid': password?.errors && password?.touched, 'is-valid': !password?.errors && password?.touched}"
         class="form-control" id="exampleInputpassword1">

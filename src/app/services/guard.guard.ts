@@ -15,11 +15,11 @@ export class GuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      let token = this.autenticacionServicio.token;
-      if(token != null){
+      let token = this.autenticacionServicio.token();
+      if(token != null ){
         return true;
       } else {
-        this.rutas.navigate(['/portafolio']);
+        this.rutas.navigate(['/login'])
         return false;
       }
   }
