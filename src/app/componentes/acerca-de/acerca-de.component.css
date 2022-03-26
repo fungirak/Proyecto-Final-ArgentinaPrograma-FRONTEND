@@ -1,8 +1,9 @@
 .logoGabi{
-  background-image: url("../../../assets/media/logoGabi.jpg");
-  width: 12em;
-  height: 12em;
+  background-image: url("../../../assets/media/logoPersona.png");
+  width: 10em;
+  height: 10em;
   border-radius: 50%;
+  padding: 1em;
 }
 
 

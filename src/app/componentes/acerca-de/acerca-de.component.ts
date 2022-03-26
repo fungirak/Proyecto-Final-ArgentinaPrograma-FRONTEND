@@ -30,6 +30,11 @@ export class AcercaDeComponent implements OnInit {
   ngOnInit(): void {
     this.datosPortafolio.obtenerDatosAcercaDe().subscribe(data => {
       this.miPortafolio=data[0];
+      console.log("mi porta", this.miPortafolio)
+      if(this.miPortafolio===undefined){
+        console.log("creando objeto por defecto en pantalla");
+        this.miPortafolio = { fullname: "#NameUser", posicion: "#TuPosición", descripcion: "Realice en esta parte blanca del formulario, una breve descripción de su persona."}
+      }
     })
   }
 
