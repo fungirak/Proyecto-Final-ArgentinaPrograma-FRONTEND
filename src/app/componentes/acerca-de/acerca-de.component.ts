@@ -20,9 +20,9 @@ export class AcercaDeComponent implements OnInit {
 
   constructor(public datosPortafolio: PortafolioService, private formBuilder: FormBuilder)  {
     this.form=this.formBuilder.group({
-      fullname: [ '', [Validators.required, Validators.minLength(2)]],
-      posicion: ['', [Validators.required, Validators.minLength(2)]],
-      descripcion: ['', [Validators.required, Validators.minLength(2)]]
+      fullname: [ '#NombreDeUsuario', [Validators.required, Validators.minLength(2)]],
+      posicion: ['#Posición', [Validators.required, Validators.minLength(2)]],
+      descripcion: ['# Realice en esta parte blanca del formulario, una breve descripción de su persona.', [Validators.required, Validators.minLength(2)]]
 
     })
    }
@@ -32,8 +32,14 @@ export class AcercaDeComponent implements OnInit {
       this.miPortafolio=data[0];
       console.log("mi porta", this.miPortafolio)
       if(this.miPortafolio===undefined){
-        console.log("creando objeto por defecto en pantalla");
-        this.miPortafolio = { fullname: "#NameUser", posicion: "#TuPosición", descripcion: "Realice en esta parte blanca del formulario, una breve descripción de su persona."}
+        this.datosPortafolio.postAcercaDe(this.form.value).subscribe(data => {
+          console.log(data);
+        });
+
+      this.datosPortafolio.obtenerDatosAcercaDe().subscribe(data => {
+        this.miPortafolio=data[0];
+      });
+
       }
     })
   }
