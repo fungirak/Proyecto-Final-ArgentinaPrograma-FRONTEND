@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class PortafolioService {
 
-  url = "https://proyecto-final-arg-prog.herokuapp.com/api/v1/";
+  url = "https://argentina-programa-portafolio.herokuapp.com/api/v1/";
 
   // Headers para POST, PUT Y DELETE.
   headers = new HttpHeaders({
