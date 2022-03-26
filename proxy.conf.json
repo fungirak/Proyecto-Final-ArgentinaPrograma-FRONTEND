@@ -1,6 +1,6 @@
 {
   "/api/*":{
-    "target":"https://proyecto-final-arg-prog.herokuapp.com",
+    "target":"https://proyecto-arg-prog-frontend.web.app",
     "changeOrigin": true,
     "secure": false,
     "logLevel": "debug"

@@ -25,9 +25,7 @@ export class EducacionComponent implements OnInit {
      titulo: ['', [Validators.required, Validators.minLength(2)]]
 
     })
-    for(let i = 0; i < 100 ; i++) {
-      this.modoEdicion = false ;
-    }
+
    }
 
 
