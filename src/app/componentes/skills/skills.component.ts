@@ -13,6 +13,8 @@ export class SkillsComponent implements OnInit {
   modoEdicion: boolean = false;
   modoEdicionArray: boolean[] = [];
   modoNuevoRegistro: boolean = false;
+  i! : number ;
+  editID! : number;
   form: FormGroup;
 
 
@@ -42,24 +44,28 @@ export class SkillsComponent implements OnInit {
     this.modoNuevoRegistro=true;
   }
 
-  onEdit(id: any, event: Event ){
+  onEdit(id: number, i:number, event: Event ){
+    this.editID = id;
+    this.i= i;
+    console.log("i", i);
+    console.log("editID", this.editID);
     this.modoEdicion=true;
     console.log("this.form.value: " , this.form.value);
     console.log("id: " , id);
   }
 
 
-  onSaveEdit( id: number, i:number,  event: Event ){
+  onSaveEdit( event: Event ){
     event.preventDefault;
-    this.datosPortafolio.putSkill(this.form.value, id).subscribe(data => {
+    this.datosPortafolio.putSkill(this.form.value, this.editID).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
-      console.log("id: " , id);
+      console.log("id: " , this.editID);
       console.log("SKILL method PUT Data Editada", data);
 
-      this.datosPortafolio.obtenerOneDatosSkill(id).subscribe(data => {
+      this.datosPortafolio.obtenerOneDatosSkill(this.editID).subscribe(data => {
         console.log("Dato: " + JSON.stringify(data));
-        this.miPortafolio[i]=data;
-        console.log("miPortafolio[i : ", this.miPortafolio[i]);
+        this.miPortafolio[this.i]=data;
+        console.log("miPortafolio[i : ", this.miPortafolio[this.i]);
       });
 
     });
@@ -88,12 +94,13 @@ export class SkillsComponent implements OnInit {
   }
 
 
-  onCancel(i: any, event: Event){
+  onCancel(event: Event){
     this.modoEdicion=false;
   }
 
 
   onDelete( i: any, event: Event ){
+    this.i = i;
     this.modoEdicion=false;
     event.preventDefault;
     Swal.fire({
@@ -102,8 +109,9 @@ export class SkillsComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Si, Eliminar.'
+      cancelButtonColor: '#00b5ff',
+      confirmButtonText: 'Si, Eliminar.',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.datosPortafolio.deleteSkill(this.miPortafolio[i].id).subscribe(data => {

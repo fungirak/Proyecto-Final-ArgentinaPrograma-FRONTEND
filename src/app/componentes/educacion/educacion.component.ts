@@ -13,6 +13,8 @@ export class EducacionComponent implements OnInit {
   miPortafolio:any;
   modoEdicion: boolean = false;
   modoNuevoRegistro: boolean = false;
+  i! : number ;
+  editID! : number;
   form: FormGroup;
 
 
@@ -49,8 +51,11 @@ export class EducacionComponent implements OnInit {
   }
 
 
-  onEdit(id: any,  event: Event ){
-
+  onEdit(id: any, i: number,  event: Event ){
+    this.editID = id;
+    this.i= i;
+    console.log("i", i);
+    console.log("editID", this.editID);
     this.modoEdicion= true;
     console.log("this.form.value: " , this.form.value);
     console.log("id: " , id);
@@ -58,17 +63,17 @@ export class EducacionComponent implements OnInit {
 
 
 
-  onSaveEdit( id: any, i: number , event: Event ){
+  onSaveEdit( event: Event ){
     event.preventDefault;
-    this.datosPortafolio.putEducacion(this.form.value, id).subscribe(data => {
+    this.datosPortafolio.putEducacion(this.form.value, this.editID).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
-      console.log("id: " , id);
+      console.log("id: " , this.editID);
       console.log("EDUCACIÓN method PUT Data Editada", data);
 
-      this.datosPortafolio.obtenerOneDatosEducacion(id).subscribe(data => {
+      this.datosPortafolio.obtenerOneDatosEducacion(this.editID).subscribe(data => {
         console.log("Dato: " + JSON.stringify(data));
-        this.miPortafolio[i]=data;
-        console.log("miPortafolio[i : ", this.miPortafolio[i]);
+        this.miPortafolio[this.i]=data;
+        console.log("miPortafolio[i : ", this.miPortafolio[this.i]);
       });
 
     });
@@ -94,7 +99,8 @@ export class EducacionComponent implements OnInit {
 
 
 
-  onDelete(  i: any, event: Event ){
+  onDelete( i:number, event: Event ){
+    this.i = i;
     this.modoEdicion = false;
     event.preventDefault;
     Swal.fire({
@@ -104,7 +110,8 @@ export class EducacionComponent implements OnInit {
       confirmButtonColor: '#d33',
       confirmButtonText: 'Si, Eliminar.',
       showCancelButton: true,
-      cancelButtonColor: '#3085d6'
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#00b5ff'
     }).then((result) => {
       if (result.isConfirmed) {
         this.datosPortafolio.deleteEducacion(this.miPortafolio[i].id).subscribe(data => {
@@ -133,7 +140,7 @@ export class EducacionComponent implements OnInit {
 
 
 
-  onCancel(i: any, event: Event){
+  onCancel(event: Event){
 
     this.modoEdicion= false;
   }

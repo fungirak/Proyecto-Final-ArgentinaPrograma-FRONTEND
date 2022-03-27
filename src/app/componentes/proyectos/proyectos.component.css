@@ -5,6 +5,12 @@
   object-position: 0px 20px;
 }
 
+.logo-proyecto{
+  height: 2em;
+  width: 2em;
+  margin-bottom: .5em;
+}
+
 
 .hoverProyectos{
   transition: .3s;

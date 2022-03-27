@@ -6,11 +6,7 @@ import { IAcercaDe } from '../interfaces/iacercade';
 import { IEducacion } from '../interfaces/ieducacion';
 import { IExperiencia } from '../interfaces/iexperiencia';
 import { IProyecto } from '../interfaces/iproyecto';
-// import { IAcercaDe } from '../interfaces/iacercade';
-// import { IEducacion } from '../interfaces/ieducacion';
-// import { IExperiencia } from '../interfaces/iexperiencia';
-// import { IProyecto } from '../interfaces/iproyecto';
-// import { ISkill } from '../interfaces/iskill';
+
 
 @Injectable({
   providedIn: 'root'

@@ -13,6 +13,8 @@ export class ExperienciaComponent implements OnInit {
   miPortafolio: any;
   modoEdicion: boolean = false;
   modoNuevoRegistro: boolean = false;
+  i! : number ;
+  editID! : number;
   form: FormGroup;
 
 
@@ -38,9 +40,12 @@ export class ExperienciaComponent implements OnInit {
     })
   }
 
-  onEdit(id: any, event: Event ){
+  onEdit(id: any, i: number, event: Event ){
+    this.editID = id;
+    this.i= i;
+    console.log("i", i);
+    console.log("editID", this.editID);
     this.modoEdicion=true;
-
     console.log("this.form.value: " , this.form.value);
     console.log("id: " , id);
   }
@@ -51,17 +56,17 @@ export class ExperienciaComponent implements OnInit {
   }
 
 
-  onSaveEdit( id: any, i:number, event: Event ){
+  onSaveEdit( event: Event ){
     event.preventDefault;
-    this.datosPortafolio.putExperiencia(this.form.value, id).subscribe(data => {
+    this.datosPortafolio.putExperiencia(this.form.value, this.editID).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
-      console.log("id: " , id);
+      console.log("id: " , this.editID);
       console.log("EXPERIENCIA method PUT Data Editada", data);
 
-      this.datosPortafolio.obtenerOneDatosExperiencia(id).subscribe(data => {
+      this.datosPortafolio.obtenerOneDatosExperiencia(this.editID).subscribe(data => {
         console.log("Dato: " + JSON.stringify(data));
-        this.miPortafolio[i]=data;
-        console.log("miPortafolio[i : ", this.miPortafolio[i]);
+        this.miPortafolio[this.i]=data;
+        console.log("miPortafolio[i : ", this.miPortafolio[this.i]);
       });
 
     });
@@ -91,12 +96,13 @@ export class ExperienciaComponent implements OnInit {
   }
 
 
-  onCancel(i: any, event: Event){
+  onCancel(event: Event){
     this.modoEdicion=false;
   }
 
 
-  onDelete( i: any, event: Event ){
+  onDelete( i: number, event: Event ){
+    this.i = i;
     this.modoEdicion=false;
     event.preventDefault;
     Swal.fire({
@@ -105,8 +111,9 @@ export class ExperienciaComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Si, Eliminar.'
+      cancelButtonColor: '#00b5ff',
+      confirmButtonText: 'Si, Eliminar.',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.datosPortafolio.deleteExperiencia(this.miPortafolio[i].id).subscribe(data => {

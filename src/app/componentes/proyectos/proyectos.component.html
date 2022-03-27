@@ -9,9 +9,9 @@
 
     <!-- FORMULARIO NEW -->
     <div *ngIf="modoNuevoRegistro===true" class="d-flex justify-content-center">
-      <form  class="col-md-8 col-sm-12 mb-4" [formGroup]="form" >
+      <form  class="col-md-8 col-12 mb-4" [formGroup]="form" >
 
-        <div class="text-center p-2 border shadow rounded bg-white mt-4">
+        <div class="text-center p-3 border shadow rounded bg-white mt-4">
 
           <div *ngIf="modoNuevoRegistro===true">
             <div class="d-flex justify-content-end">
@@ -24,27 +24,27 @@
             </div>
           </div>
 
-          <h3 class="text-center text-info m-3">Nuevo Proyecto</h3>
+          <h3 class="text-center text-info m-3"><img src="assets/media/logoProyecto.png" class="logo-proyecto" alt="logo-proyecto"><span class="ms-3">Nuevo Proyecto</span></h3>
 
           <div  class=" ">
-            <div  class="text-start alineado">
+            <div  class="text-start ">
               <label for="titulo" class="form-label  fw-bold">Titulo:</label>
             </div>
-           <input type="text" [(ngModel)]="miPortafolio.titulo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
+           <input type="text" [(ngModel)]="miPortafolio.titulo" class="col-md-10 col-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
           </div>
 
             <div  class="">
-              <div  class="text-start alineado">
+              <div  class="text-start ">
                 <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
               </div>
-             <input type="text" [(ngModel)]="miPortafolio.descripcion" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
+             <input type="text" [(ngModel)]="miPortafolio.descripcion" class="col-md-10 col-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
             </div>
 
             <div  class=" ">
-              <div  class="text-start alineado">
+              <div  class="text-start ">
                 <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
               </div>
-             <input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow  mb-4" placeholder=" 🖼 Link Imagen" formControlName="imagen" id="imagen" required>
+             <input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-12 p-2 mb-2 border rounded  border-1 border-danger shadow  mb-4" placeholder=" 🖼 Link Imagen" formControlName="imagen" id="imagen" required>
             </div>
 
       </div>
@@ -53,18 +53,67 @@
     </div>
     <!-- FIN FORMULARIO NEW -->
 
+    <!-- FORMULARIO EDIT -->
+    <div *ngIf="modoEdicion===true" class="d-flex justify-content-center">
+      <form  class="col-md-8 col-12 mb-4 bg-white justify-content-center rounded shadow p-3" [formGroup]="form" >
+
+         <!-- MÓDULO BOTONES EDIT -->
+
+
+          <div class=" d-flex justify-content-end">
+            <div class="d-flex justify-content-end">
+              <button class="btn p-0 m-1" (click)="onCancel($event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
+              <button class="btn p-0 m-1" (click)="onSaveEdit($event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+           </div>
+          </div>
+
+
+
+        <!-- FIN MÓDULO BOTONES EDIT -->
+
+
+        <div class="text-center p-2 ">
+
+          <h3 class="text-center text-info m-3"><img src="assets/media/logoProyecto.png" class="logo-proyecto" alt="logo-proyecto"><span class="ms-3">Editar Proyecto</span></h3>
+
+          <div  class=" ">
+            <div  class="text-start">
+              <label for="titulo" class="form-label  fw-bold">Título:</label>
+            </div>
+           <input type="text"  class="col-md-10 col-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
+          </div>
+
+            <div  class="">
+              <div  class="text-start">
+                <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
+              </div>
+             <input type="text"  class="col-md-10 col-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
+            </div>
+
+            <div  class=" ">
+              <div  class="text-start">
+                <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
+              </div>
+             <input type="text"  class="col-md-10 col-12 p-2 mb-2 border rounded  border-1 border-danger shadow mb-4" placeholder="  🖼 Link Imagen" formControlName="imagen" id="imagen" required>
+            </div>
+
+      </div>
+
+      </form>
+    </div>
+     <!-- FIN FORMULARIO EDIT -->
+
+
   <div class="row">
     <div *ngFor="let miPortafolio of miPortafolio ; let i = index" [attr.data-index]="i" class="col-md-4 col-sm-12">
 
 
           <div class="text-center m-2 border rounded p-2 bg-white shadow-lg">
 
-                    <!-- MÓDULO BOTONES EDIT -->
-
             <div *ngIf="modoEdicion===false">
               <div class=" d-flex justify-content-end">
                 <div class="p-1">
-                  <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+                  <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, i, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
                 </div>
 
                 <div class="p-1">
@@ -73,58 +122,13 @@
               </div>
             </div>
 
-            <div *ngIf="modoEdicion===true">
-              <div class="d-flex justify-content-end">
-                <div class="p-1">
-                  <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-                  <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id , i,  $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
-
-                </div>
-              </div>
-            </div>
-            <!-- FIN MÓDULO BOTONES EDIT -->
-
-             <!-- FORMULARIO EDIT -->
-            <div *ngIf="modoEdicion===true">
-              <form  class="col-md-12 col-sm-12 mb-4" [formGroup]="form" >
-
-                <div class="text-center p-2 ">
-
-                  <div  class=" ">
-                    <div  class="text-start alineado-sm">
-                      <label for="titulo" class="form-label  fw-bold">Título:</label>
-                    </div>
-                   <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
-                  </div>
-
-                    <div  class="">
-                      <div  class="text-start alineado-sm">
-                        <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
-                      </div>
-                     <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
-                    </div>
-
-                    <div  class=" ">
-                      <div  class="text-start alineado-sm">
-                        <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
-                      </div>
-                     <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder="  🖼 Link Imagen" formControlName="imagen" id="imagen" required>
-                    </div>
-
-              </div>
-
-              </form>
-            </div>
-             <!-- FIN FORMULARIO EDIT -->
-
-            <div *ngIf="modoEdicion===false">
                 <h5 class="m-2">  ✳ {{miPortafolio.titulo}}</h5>
                 <a href="" target="_blank" rel="noreferrer noopener">
                   <img src={{miPortafolio.imagen}} alt="imagenproyecto" class="logosProyectos hoverProyectos">
                 </a>
                 <p class="p-2 m-3"> 📝 {{miPortafolio.descripcion}}</p>
-            </div>
+
           </div>
 
     </div>
