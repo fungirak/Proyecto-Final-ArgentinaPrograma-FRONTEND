@@ -99,7 +99,7 @@
         <div *ngIf="modoEdicion===false">
           <div class=" d-flex justify-content-end">
             <div class="p-1">
-              <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
+              <button class="btn p-0 m-1" (click)="onEdit(miPortafolio.id,   $event)" ><span><img src="assets/media/logoPencil.png" alt="editar" class="logo-sm mt-1"></span></button>
             </div>
 
             <div class="p-1">
@@ -114,7 +114,7 @@
           <div class="p-1">
             <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-            <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id, $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+            <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id, i,  $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
 
           </div>
         </div>
@@ -132,35 +132,35 @@
                 <div  class="text-start alineado">
                   <label for="institucion" class="form-label  fw-bold">Institucion:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.institucion" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" 🌐 Institucion"  formControlName="institucion" id="institucion" required autofocus>
+                <input type="text"   class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" 🌐 Institucion"  formControlName="institucion" id="institucion" required autofocus>
               </div>
 
               <div  class=" ">
                 <div  class="text-start alineado">
                   <label for="titulo" class="form-label  fw-bold">Titulo:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.titulo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" 🎓 Titulo" formControlName="titulo" id="titulo" required>
+                <input type="text"   class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" 🎓 Titulo" formControlName="titulo" id="titulo" required>
               </div>
 
               <div  class=" ">
                 <div  class="text-start alineado">
                   <label for="periodo" class="form-label  fw-bold">Periodo:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.periodo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo" required >
+                <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" 📆 Periodo" formControlName="periodo" id="periodo" required >
               </div>
 
               <div  class="">
                 <div  class="text-start alineado">
                   <label for="estado"  class="form-label fw-bold">Estado:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.estado"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder="⏳ Estado" formControlName="estado" id="estado"  required>
+                <input type="text" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder="⏳ Estado" formControlName="estado" id="estado"  required>
               </div>
 
               <div  class="">
                 <div  class="text-start alineado">
                   <label for="detalles" class="form-label  fw-bold">Detalles:</label>
                 </div>
-                <input type="text" [(ngModel)]="miPortafolio.detalles" class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" ℹ Detalles" formControlName="detalles" id="detalles"  required >
+                <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded border-1 border-info shadow" placeholder=" ℹ Detalles" formControlName="detalles" id="detalles"  required >
               </div>
         </div>
 

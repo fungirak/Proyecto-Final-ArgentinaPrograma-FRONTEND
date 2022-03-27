@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
 import Swal from 'sweetalert2';
+import { IAcercaDe } from 'src/app/interfaces/iacercade';
 
 
 @Component({
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-  miPortafolio:any;
+  miPortafolio: any ;
   modoEdicion: boolean = false;
   modoNuevoRegistro: boolean = false;
   form: FormGroup;

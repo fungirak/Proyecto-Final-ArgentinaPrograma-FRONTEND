@@ -45,14 +45,22 @@ export class ProyectosComponent implements OnInit {
     console.log("id: " , id);
   }
 
-  onSaveEdit( id: any, event: Event ){
+  onSaveEdit( id: number, i: number, event: Event ){
     event.preventDefault;
     this.datosPortafolio.putProyecto(this.form.value, id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("id: " , id);
       console.log("PROYECTO method PUT Data Editada", data);
+
+
+      this.datosPortafolio.obtenerOneDatosProyecto(id).subscribe(data => {
+        console.log("Dato: " + JSON.stringify(data));
+        this.miPortafolio[i]=data;
+        console.log("miPortafolio[i : ", this.miPortafolio[i]);
+      });
+
     });
-    this.modoEdicion=false;
+    this.modoEdicion = false;
   }
 
   onSaveNewNuevoRegistro(event: Event ){
@@ -60,12 +68,13 @@ export class ProyectosComponent implements OnInit {
     this.datosPortafolio.postProyecto(this.form.value).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("PROYECTO method POST Data Enviada", data);
-    this.modoNuevoRegistro=false;
+
+      this.datosPortafolio.obtenerDatosProyectos().subscribe(data => {
+        this.miPortafolio=data;
+      });
     });
 
-    this.datosPortafolio.obtenerDatosProyectos().subscribe(data => {
-      this.miPortafolio=data;
-    });
+    this.modoNuevoRegistro=false;
 
   }
 

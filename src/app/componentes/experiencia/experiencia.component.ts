@@ -31,7 +31,7 @@ export class ExperienciaComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.datosPortafolio.obtenerDatosExperiencia().subscribe(data => {
+    this.datosPortafolio.obtenerDatosExperiencias().subscribe(data => {
       console.log("Datos Personales: " + JSON.stringify(data));
       this.miPortafolio=data;
       console.log(data);
@@ -51,14 +51,21 @@ export class ExperienciaComponent implements OnInit {
   }
 
 
-  onSaveEdit( id: any, event: Event ){
+  onSaveEdit( id: any, i:number, event: Event ){
     event.preventDefault;
     this.datosPortafolio.putExperiencia(this.form.value, id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("id: " , id);
       console.log("EXPERIENCIA method PUT Data Editada", data);
+
+      this.datosPortafolio.obtenerOneDatosExperiencia(id).subscribe(data => {
+        console.log("Dato: " + JSON.stringify(data));
+        this.miPortafolio[i]=data;
+        console.log("miPortafolio[i : ", this.miPortafolio[i]);
+      });
+
     });
-    this.modoEdicion=false;
+    this.modoEdicion = false;
   }
 
 
@@ -67,12 +74,15 @@ export class ExperienciaComponent implements OnInit {
     this.datosPortafolio.postExperiencia(this.form.value).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("EXPERIENCIA method POST Data Enviada", data);
-    this.modoNuevoRegistro=false;
-    });
 
-    this.datosPortafolio.obtenerDatosExperiencia().subscribe(data => {
+    this.datosPortafolio.obtenerDatosExperiencias().subscribe(data => {
       this.miPortafolio=data;
     });
+
+    });
+
+    this.modoNuevoRegistro=false;
+
   }
 
 
@@ -102,7 +112,7 @@ export class ExperienciaComponent implements OnInit {
         this.datosPortafolio.deleteExperiencia(this.miPortafolio[i].id).subscribe(data => {
           console.log("Borrando registro", data);
 
-          this.datosPortafolio.obtenerDatosExperiencia().subscribe(data => {
+          this.datosPortafolio.obtenerDatosExperiencias().subscribe(data => {
             this.miPortafolio=data;
           });
 

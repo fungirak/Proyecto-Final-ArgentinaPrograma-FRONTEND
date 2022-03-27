@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
 import Swal from 'sweetalert2';
+import { IEducacion } from 'src/app/interfaces/ieducacion';
 
 @Component({
   selector: 'app-educacion',
@@ -48,7 +49,8 @@ export class EducacionComponent implements OnInit {
   }
 
 
-  onEdit(id: any, event: Event ){
+  onEdit(id: any,  event: Event ){
+
     this.modoEdicion= true;
     console.log("this.form.value: " , this.form.value);
     console.log("id: " , id);
@@ -56,14 +58,22 @@ export class EducacionComponent implements OnInit {
 
 
 
-  onSaveEdit( id: any, event: Event ){
+  onSaveEdit( id: any, i: number , event: Event ){
     event.preventDefault;
     this.datosPortafolio.putEducacion(this.form.value, id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("id: " , id);
       console.log("EDUCACIÓN method PUT Data Editada", data);
+
+      this.datosPortafolio.obtenerOneDatosEducacion(id).subscribe(data => {
+        console.log("Dato: " + JSON.stringify(data));
+        this.miPortafolio[i]=data;
+        console.log("miPortafolio[i : ", this.miPortafolio[i]);
+      });
+
     });
     this.modoEdicion = false;
+
   }
 
 
@@ -73,12 +83,13 @@ export class EducacionComponent implements OnInit {
     this.datosPortafolio.postEducacion(this.form.value).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("AcercaDe method post Data", data);
-    this.modoNuevoRegistro=false;
+
+      this.datosPortafolio.obtenerDatosEducacion().subscribe(data => {
+        this.miPortafolio=data;
+      });
     });
 
-    this.datosPortafolio.obtenerDatosEducacion().subscribe(data => {
-      this.miPortafolio=data;
-    });
+    this.modoNuevoRegistro=false;
   }
 
 
@@ -123,6 +134,7 @@ export class EducacionComponent implements OnInit {
 
 
   onCancel(i: any, event: Event){
+
     this.modoEdicion= false;
   }
 

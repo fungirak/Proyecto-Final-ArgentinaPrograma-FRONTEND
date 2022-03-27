@@ -78,7 +78,7 @@
                 <div class="p-1">
                   <button class="btn p-0 m-1" (click)="onCancel(i, $event)" ><span><img src="assets/media/logoCancel.png" alt="editar" class="logo-sm mt-1"></span></button>
 
-                  <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id , $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
+                  <button class="btn p-0 m-1" (click)="onSaveEdit(miPortafolio.id , i,  $event)" ><span><img src="assets/media/logoSave.png" alt="editar" class="logo-sm mt-1"></span></button>
 
                 </div>
               </div>
@@ -95,21 +95,21 @@
                     <div  class="text-start alineado-sm">
                       <label for="titulo" class="form-label  fw-bold">Título:</label>
                     </div>
-                   <input type="text" [(ngModel)]="miPortafolio.titulo" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
+                   <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" ✳ Titulo" formControlName="titulo" id="titulo" required autofocus>
                   </div>
 
                     <div  class="">
                       <div  class="text-start alineado-sm">
                         <label for="descripcion" class="form-label  fw-bold">Descripcion:</label>
                       </div>
-                     <input type="text" [(ngModel)]="miPortafolio.descripcion" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
+                     <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder=" 📝 Descripcion"  formControlName="descripcion" id="descripcion" required >
                     </div>
 
                     <div  class=" ">
                       <div  class="text-start alineado-sm">
                         <label for="imagen" class="form-label  fw-bold">Link Imagen:</label>
                       </div>
-                     <input type="text" [(ngModel)]="miPortafolio.imagen" class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder="  🖼 Link Imagen" formControlName="imagen" id="imagen" required>
+                     <input type="text"  class="col-md-10 col-sm-12 p-2 mb-2 border rounded  border-1 border-danger shadow" placeholder="  🖼 Link Imagen" formControlName="imagen" id="imagen" required>
                     </div>
 
               </div>

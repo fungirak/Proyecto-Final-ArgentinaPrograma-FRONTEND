@@ -49,14 +49,21 @@ export class SkillsComponent implements OnInit {
   }
 
 
-  onSaveEdit( id: any, event: Event ){
+  onSaveEdit( id: number, i:number,  event: Event ){
     event.preventDefault;
     this.datosPortafolio.putSkill(this.form.value, id).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("id: " , id);
       console.log("SKILL method PUT Data Editada", data);
+
+      this.datosPortafolio.obtenerOneDatosSkill(id).subscribe(data => {
+        console.log("Dato: " + JSON.stringify(data));
+        this.miPortafolio[i]=data;
+        console.log("miPortafolio[i : ", this.miPortafolio[i]);
+      });
+
     });
-    this.modoEdicion=false;
+    this.modoEdicion = false;
   }
 
 
@@ -66,13 +73,13 @@ export class SkillsComponent implements OnInit {
     this.datosPortafolio.postSkill(this.form.value).subscribe(data => {
       console.log("this.form.value: " , this.form.value);
       console.log("SKILL method POST Data Enviada", data);
+
+      this.datosPortafolio.obtenerDatosSkills().subscribe(data => {
+        this.miPortafolio=data;
+      });
+    });
+
     this.modoNuevoRegistro=false;
-    });
-
-    this.datosPortafolio.obtenerDatosSkills().subscribe(data => {
-      this.miPortafolio=data;
-    });
-
   }
 
 
