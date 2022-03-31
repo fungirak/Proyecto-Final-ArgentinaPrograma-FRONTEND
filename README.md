@@ -1,9 +1,10 @@
 # PROYECTO FINAL ARGENTINA PROGRAMA
 # MÓDULO "YO PROGRAMO" EDICIÓN 2021/2022
 # by GABRIEL LAZZARINI
-
+______________________________________________________
 # Usuario de prueba para el sistema : nombreUsuario: "usuario1" , password: "usuario1"  
-Ingresar los datos en la caja de login, hacer click en iniciar sesión y esperar 4 segundos 
+# Ingresar los datos en la caja de login, hacer click en iniciar sesión y esperar 4 segundos 
+______________________________________________________
 
 # FRONTEND Hecho con ANGULAR Framework.
 
