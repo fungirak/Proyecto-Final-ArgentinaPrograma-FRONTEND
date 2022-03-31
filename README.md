@@ -2,8 +2,8 @@
 # MÓDULO "YO PROGRAMO" EDICIÓN 2021/2022
 # by GABRIEL LAZZARINI
 
-***** Usuario de prueba para el sistema : nombreUsuario: "usuario1" , password: "usuario1" *****
-***** Ingresar los datos en la caja de login, hacer click en iniciar sesión y esperar 4 segundos *****
+# Usuario de prueba para el sistema : nombreUsuario: "usuario1" , password: "usuario1"  
+Ingresar los datos en la caja de login, hacer click en iniciar sesión y esperar 4 segundos 
 
 # FRONTEND Hecho con ANGULAR Framework.
 
