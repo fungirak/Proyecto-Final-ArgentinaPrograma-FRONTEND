@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
 import Swal from 'sweetalert2';
 import { IAcercaDe } from 'src/app/interfaces/iacercade';
@@ -20,11 +20,10 @@ export class AcercaDeComponent implements OnInit {
 
 
   constructor(public datosPortafolio: PortafolioService, private formBuilder: FormBuilder)  {
-    this.form=this.formBuilder.group({
-      fullname: [ '#NombreDeUsuario', [Validators.required, Validators.minLength(2)]],
-      posicion: ['#Posición', [Validators.required, Validators.minLength(2)]],
-      descripcion: ['# Realice en esta parte blanca del formulario, una breve descripción de su persona.', [Validators.required, Validators.minLength(2)]]
-
+    this.form= new FormGroup({
+      fullname: new FormControl([ '', [Validators.required, Validators.minLength(2)]]),
+      posicion: new FormControl(['', [Validators.required, Validators.minLength(2)]]),
+      descripcion: new FormControl(['', [Validators.required, Validators.minLength(2)]])
     })
    }
 
@@ -52,9 +51,21 @@ export class AcercaDeComponent implements OnInit {
 
 
   onEdit(id: any, event: Event ){
-    this.modoEdicion= true;
+
     console.log("this.form.value: " , this.form.value);
     console.log("id: " , id);
+
+    this.form.setValue({
+     fullname: this.miPortafolio.fullname,
+      posicion: this.miPortafolio.posicion,
+      descripcion: this.miPortafolio.descripcion
+    })
+
+    console.log("this.form.value: " , this.form.value);
+
+
+
+    this.modoEdicion = true;
   }
 
   onSaveEdit( id: any, event: Event ){
@@ -122,7 +133,23 @@ export class AcercaDeComponent implements OnInit {
   }
 
   onCancel(event: Event){
-    this.modoEdicion=false;
+
+    let objetoFormulario = this.form.controls;
+    let keysForms =  Object.keys(objetoFormulario);
+    console.log("keysForm: ", keysForms);
+    let valueForms = Object.values(objetoFormulario);
+    console.log("valuesForm: ", valueForms);
+
+    valueForms[0].setValue('');
+    valueForms[1].setValue('');
+    valueForms[2].setValue('');
+
+    console.log("valueFormDetalles: ", valueForms[0].value );
+    console.log("valueFormEstado: ", valueForms[1].value );
+    console.log("valueFormInstitucion: ", valueForms[2].value );
+
+    this.modoEdicion= false;
+
   }
 
 }
