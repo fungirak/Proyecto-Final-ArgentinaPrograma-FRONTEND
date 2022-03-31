@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PortafolioService } from '../../services/portafolio.service';
 import Swal from 'sweetalert2';
 
@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 export class SkillsComponent implements OnInit {
   miPortafolio:any;
   modoEdicion: boolean = false;
-  modoEdicionArray: boolean[] = [];
   modoNuevoRegistro: boolean = false;
   i! : number ;
   editID! : number;
@@ -19,12 +18,10 @@ export class SkillsComponent implements OnInit {
 
 
 
-  constructor(public datosPortafolio: PortafolioService, private formBuilder: FormBuilder) {
-    this.form=this.formBuilder.group({
-      descripcion: [ '', [Validators.required, Validators.minLength(2)]],
-      imagen: ['', [Validators.required, Validators.minLength(2)]],
-      tecnologia: ['', [Validators.required, Validators.minLength(2)]],
-
+  constructor(public datosPortafolio: PortafolioService) {
+    this.form= new FormGroup ({
+      imagen: new FormControl(['', [Validators.required, Validators.minLength(2)]]),
+      tecnologia: new FormControl(['', [Validators.required, Validators.minLength(2)]]),
     })
    }
 
@@ -41,6 +38,19 @@ export class SkillsComponent implements OnInit {
 
 
   onCrear(event: Event){
+    let objetoFormulario = this.form.controls;
+    let keysForms =  Object.keys(objetoFormulario);
+    console.log("keysForm: ", keysForms);
+    let valueForms = Object.values(objetoFormulario);
+    console.log("valuesForm: ", valueForms);
+
+    valueForms[0].setValue('');
+    valueForms[1].setValue('');
+
+
+    console.log("valueFormDetalles: ", valueForms[0].value );
+    console.log("valueFormEstado: ", valueForms[1].value );
+
     this.modoNuevoRegistro=true;
   }
 
@@ -49,9 +59,18 @@ export class SkillsComponent implements OnInit {
     this.i= i;
     console.log("i", i);
     console.log("editID", this.editID);
-    this.modoEdicion=true;
     console.log("this.form.value: " , this.form.value);
     console.log("id: " , id);
+
+    this.form.setValue({
+      imagen: this.miPortafolio[i].imagen,
+      tecnologia: this.miPortafolio[i].tecnologia
+    })
+
+    console.log("this.form.value: " , this.form.value);
+
+    this.modoEdicion=true;
+
   }
 
 
@@ -95,6 +114,19 @@ export class SkillsComponent implements OnInit {
 
 
   onCancel(event: Event){
+    let objetoFormulario = this.form.controls;
+    let keysForms =  Object.keys(objetoFormulario);
+    console.log("keysForm: ", keysForms);
+    let valueForms = Object.values(objetoFormulario);
+    console.log("valuesForm: ", valueForms);
+
+    valueForms[0].setValue('');
+    valueForms[1].setValue('');
+
+
+    console.log("valueFormDetalles: ", valueForms[0].value );
+    console.log("valueFormEstado: ", valueForms[1].value );
+
     this.modoEdicion=false;
   }
 
@@ -104,7 +136,7 @@ export class SkillsComponent implements OnInit {
     this.modoEdicion=false;
     event.preventDefault;
     Swal.fire({
-      title: '¿ELIMINAR ITEM SKILL?',
+      title: `¿ELIMINAR SKILL ${(this.miPortafolio[i].tecnologia).toUpperCase() }?`,
       text: "No podrá revertir los cambios.",
       icon: 'warning',
       showCancelButton: true,
