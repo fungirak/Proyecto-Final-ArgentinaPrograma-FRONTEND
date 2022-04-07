@@ -1,3 +1,4 @@
+/*
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
@@ -53,3 +54,4 @@ export class RegisterComponent implements OnInit {
     });
    }
 }
+*/

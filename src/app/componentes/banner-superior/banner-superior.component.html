@@ -41,17 +41,22 @@
     <!-- ESPACIO PARA UN BOTÓN -->
     <div class="d-flex col-md-6 col-sm-6 justify-content-center mb-2">
     <div *ngIf="portafolioActive === false ">
-      <div class="d-flex justify-content-around   col-md-12 col-sm-12  mt-2  ">
-        <div class="col-6 text-center ">
+      <div class="d-flex justify-content-around   col-md-12 col-sm-12   ">
+        <div class="col-12 text-center ">
           <button class=" btn btn-info btn-md w-100 text-white fw-bold shadow-lg "
           routerLink="/login"
-          >LOGIN</button>
+          >MODO EDICIÓN</button>
         </div>
+
+        <!--
         <div class="col-8 text-center ">
           <button class="btn btn-info border border-info btn-md w-100 text-white fw-bold fw-bold shadow-lg ms-3"
               routerLink="/register"
           >CREAR CUENTA</button>
         </div>
+        -->
+
+
       </div>
     </div>
 
@@ -60,7 +65,7 @@
         <div class="col-6 w-100 text-center">
           <button class=" btn btn-dark rounded  btn-md w-100 text-white fw-bold shadow-lg "
            (click)="logout($event)"
-          >CERRAR SESIÓN</button>
+          >TERMINAR EDICIÓN</button>
         </div>
       </div>
     </div>
